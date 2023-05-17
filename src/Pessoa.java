@@ -1,10 +1,10 @@
 public class Pessoa {
 
-    String nomeCompleto
-    String cpf
-    Integer telefone
-    String email
-    String status
+   private String nomeCompleto;
+    private String cpf;
+    private Integer telefone;
+    private String email;
+    private String status;
 
     public String getNomeCompleto() {
         return nomeCompleto;
