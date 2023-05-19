@@ -1,4 +1,5 @@
 package model;
+import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.List;
@@ -11,14 +12,14 @@ public class Aluguel {
 
     private String descricaoAluguel;
 
-    private LocalTime dataHoraInicio;
+    private LocalDateTime dataHoraInicio;
 
-    private LocalTime dataHoraFim;
+    private LocalDateTime dataHoraFim;
 
     private List<String> visitantes = new ArrayList<>();
 
 
-    public Aluguel(String descricaoAluguel, LocalTime dataHoraInicio, LocalTime dataHoraFim, List<String> visitantes) {
+    public Aluguel(String descricaoAluguel, LocalDateTime dataHoraInicio, LocalDateTime dataHoraFim, List<String> visitantes) {
         this.descricaoAluguel = descricaoAluguel;
         this.dataHoraInicio = dataHoraInicio;
         this.dataHoraFim = dataHoraFim;
@@ -39,11 +40,11 @@ public class Aluguel {
         return descricaoAluguel;
     }
 
-    public LocalTime getDataHoraInicio() {
+    public LocalDateTime getDataHoraInicio() {
         return dataHoraInicio;
     }
 
-    public LocalTime getDataHoraFim() {
+    public LocalDateTime getDataHoraFim() {
         return dataHoraFim;
     }
 
@@ -63,11 +64,11 @@ public class Aluguel {
         this.descricaoAluguel = descricao;
     }
 
-    public void setDataHoraInicio(LocalTime dataHoraInicio) {
+    public void setDataHoraInicio(LocalDateTime dataHoraInicio) {
         this.dataHoraInicio = dataHoraInicio;
     }
 
-    public void setDataHoraFim(LocalTime dataHoraFim) {
+    public void setDataHoraFim(LocalDateTime dataHoraFim) {
         this.dataHoraFim = dataHoraFim;
     }
 
