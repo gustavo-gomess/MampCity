@@ -1,6 +1,8 @@
+package model;
+
 public class Pessoa {
 
-   private String nomeCompleto;
+    private String nomeCompleto;
     private String cpf;
     private Integer telefone;
     private String email;
