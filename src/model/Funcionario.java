@@ -1,13 +1,15 @@
 package model;
 
-public class Funcionario {
+import java.math.BigDecimal;
+
+public class Funcionario extends Pessoa{
     private String clt;
     private String cargo;
     private String setor;
     private String expediente;
-    private double salario;
+    private BigDecimal salario;
 
-    public Funcionario(String clt, String cargo, String setor, String expediente, double salario) {
+    public Funcionario(String clt, String cargo, String setor, String expediente, BigDecimal salario) {
         this.clt = clt;
         this.cargo = cargo;
         this.setor = setor;
@@ -48,11 +50,11 @@ public class Funcionario {
         this.expediente = expediente;
     }
 
-    public double getSalario() {
+    public BigDecimal getSalario() {
         return salario;
     }
 
-    public void setSalario(double salario) {
+    public void setSalario(BigDecimal salario) {
         this.salario = salario;
     }
 }

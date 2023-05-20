@@ -2,27 +2,27 @@ package model;
 
 public class Dependente {
 
-    private Socio Sócio;
+    private Socio socio;
 
-    private String NomeCompleto;
+    private String nomeCompleto;
 
     public void setNomeCompleto(String nomeCompleto) {
-        NomeCompleto = nomeCompleto;
+        nomeCompleto = nomeCompleto;
     }
 
-    public Socio getSócio() {
-        return Sócio;
+    public Socio getSocio() {
+        return socio;
     }
 
     public String getNomeCompleto() {
-        return NomeCompleto;
+        return nomeCompleto;
     }
 
     @Override
     public String toString() {
         return "model.Dependente{" +
-                "Sócio=" + Sócio +
-                ", NomeCompleto='" + NomeCompleto + '\'' +
+                "Sócio=" + socio +
+                ", NomeCompleto='" + nomeCompleto + '\'' +
                 '}';
     }
 
