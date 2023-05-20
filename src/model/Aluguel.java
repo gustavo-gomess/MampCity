@@ -16,7 +16,7 @@ public class Aluguel {
 
     private LocalDateTime dataHoraFim;
 
-    private List<String> visitantes = new ArrayList<>();
+    private List<String> visitantes;
 
 
     public Aluguel(String descricaoAluguel, LocalDateTime dataHoraInicio, LocalDateTime dataHoraFim, List<String> visitantes) {

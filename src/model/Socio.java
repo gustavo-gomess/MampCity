@@ -1,6 +1,6 @@
 package model;
 
-public class Socio {
+public class Socio extends Pessoa{
     private String nome;
     private String cpf;
     private String email;

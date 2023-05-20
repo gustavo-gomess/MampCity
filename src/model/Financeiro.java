@@ -10,8 +10,6 @@ public class Financeiro {
     public void calculaArrecadacaoMes (){
 
     }
-
-
     public void setTotalEmCaixa(BigDecimal totalEmCaixa) {
         this.totalEmCaixa = totalEmCaixa;
     }
