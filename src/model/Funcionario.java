@@ -2,28 +2,28 @@ package model;
 
 import java.math.BigDecimal;
 
-public class Funcionario extends Pessoa{
-    private String clt;
+public class Funcionario extends Pessoa {
     private String cargo;
     private String setor;
     private String expediente;
     private BigDecimal salario;
 
-    public Funcionario(String clt, String cargo, String setor, String expediente, BigDecimal salario) {
-        this.clt = clt;
+    public Funcionario(String cargo,
+                       String setor,
+                       String expediente,
+                       BigDecimal salario,
+                       String nome,
+                       String email,
+                       String cpf,
+                       Integer telefone) {
+        this.setNomeCompleto(nome);
+        this.setEmail(email);
+        this.setCpf(cpf);
+        this.setTelefone(telefone);
         this.cargo = cargo;
         this.setor = setor;
         this.expediente = expediente;
         this.salario = salario;
-    }
-
-
-    public String getClt() {
-        return clt;
-    }
-
-    public void setClt(String clt) {
-        this.clt = clt;
     }
 
     public String getCargo() {
@@ -56,6 +56,20 @@ public class Funcionario extends Pessoa{
 
     public void setSalario(BigDecimal salario) {
         this.salario = salario;
+    }
+
+    @Override
+    public String toString() {
+        return "Funcionario{" +
+                ", nome='" + this.getNomeCompleto() + '\'' +
+                ", telefone= '" + this.getTelefone() + '\'' +
+                ", CPF ='" + this.getCpf() + '\'' +
+                ", email=' " + this.getEmail() + '\'' +
+                "cargo='" + cargo + '\'' +
+                ", setor='" + setor + '\'' +
+                ", expediente='" + expediente + '\'' +
+                ", salario=" + salario +
+                '}';
     }
 }
 
