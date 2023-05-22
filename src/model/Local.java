@@ -1,11 +1,8 @@
 package model;
 
 public class Local {
-
     private String nome;
-
     private String descricacaoLocal;
-
 
     public Local(String nome, String descricacaoLocal) {
         this.nome = nome;
@@ -27,7 +24,6 @@ public class Local {
     public void setDescricacaoLocal(String descricacaoLocal) {
         this.descricacaoLocal = descricacaoLocal;
     }
-
 
     @Override
     public String toString() {
