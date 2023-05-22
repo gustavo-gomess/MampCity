@@ -1,6 +1,6 @@
 package model;
 
-public class Socio extends Pessoa{
+public class Socio extends Pessoa {
     private String nome;
     private String cpf;
     private String email;
@@ -26,6 +26,10 @@ public class Socio extends Pessoa{
     @Override
     public String toString() {
         return "Socio{" +
+                ", nome='" + this.getNomeCompleto() + '\'' +
+                ", telefone= '" + this.getTelefone() + '\'' +
+                ", CPF ='" + this.getCpf() + '\'' +
+                ", email=' " + this.getEmail() + '\'' +
                 "nome='" + nome + '\'' +
                 ", cpf='" + cpf + '\'' +
                 ", email='" + email + '\'' +
