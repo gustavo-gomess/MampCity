@@ -1,34 +1,68 @@
 package model;
 
+import java.math.BigDecimal;
+import java.util.List;
+
 public class Socio extends Pessoa{
-    private String nome;
-    private String cpf;
-    private String email;
+    private Integer carterinha;
+    private EnumStatusSocio enumStatusSocio;
+    private BigDecimal valorMensalidade;
+    private List<Dependente> dependente;
 
-    public Socio(String nome, String cpf, String email) {
-        this.nome = nome;
-        this.cpf = cpf;
-        this.email = email;
+    public Socio(Integer carterinha, EnumStatusSocio enumStatusSocio, BigDecimal valorMensalidade, List<Dependente> dependente, String nome, String cpf, String email, Integer telefone) {
+        this.setNomeCompleto(nome);
+        this.setEmail(email);
+        this.setCpf(cpf);
+        this.setTelefone(telefone);
+        this.carterinha = carterinha;
+        this.enumStatusSocio = enumStatusSocio;
+        this.valorMensalidade = valorMensalidade;
+        this.dependente = dependente;
     }
 
-    public String getNome() {
-        return nome;
+    public Integer getCarterinha() {
+        return carterinha;
     }
 
-    public String getCpf() {
-        return cpf;
+    public void setCarterinha(Integer carterinha) {
+        this.carterinha = carterinha;
     }
 
-    public String getEmail() {
-        return email;
+    public EnumStatusSocio getEnumStatusSocio() {
+        return enumStatusSocio;
+    }
+
+    public void setEnumStatusSocio(EnumStatusSocio enumStatusSocio) {
+        this.enumStatusSocio = enumStatusSocio;
+    }
+
+    public BigDecimal getValorMensalidade() {
+        return valorMensalidade;
+    }
+
+    public void setValorMensalidade(BigDecimal valorMensalidade) {
+        this.valorMensalidade = valorMensalidade;
+    }
+
+    public List<Dependente> getDependente() {
+        return dependente;
+    }
+
+    public void setDependente(List<Dependente> dependente) {
+        this.dependente = dependente;
     }
 
     @Override
     public String toString() {
         return "Socio{" +
-                "nome='" + nome + '\'' +
-                ", cpf='" + cpf + '\'' +
-                ", email='" + email + '\'' +
+                ", nome='" + this.getNomeCompleto() + '\'' +
+                ", telefone= '" + this.getTelefone() + '\'' +
+                ", CPF ='" + this.getCpf() + '\'' +
+                ", email=' " + this.getEmail() + '\'' +
+                " arterinha=" + carterinha +
+                ", enumStatusSocio=" + enumStatusSocio +
+                ", valorMensalidade=" + valorMensalidade +
+                ", dependente=" + dependente +
                 '}';
     }
 }
