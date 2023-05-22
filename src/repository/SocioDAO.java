@@ -7,6 +7,16 @@ import java.util.List;
 public class SocioDAO {
     static List<Socio> socios = new ArrayList<>();
 
+
+    public SocioDAO(){
+        init();
+    }
+
+    public void init (){
+
+       // socios.add(new Socio());
+    }
+
     public static void salvar(Socio socio) {
         socios.add(socio);
     }
