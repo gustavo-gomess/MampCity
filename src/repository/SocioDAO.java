@@ -9,13 +9,9 @@ public class SocioDAO {
 
 
     public SocioDAO(){
-        init();
+
     }
 
-    public void init (){
-
-       // socios.add(new Socio());
-    }
 
     public static void salvar(Socio socio) {
         socios.add(socio);
