@@ -6,10 +6,11 @@ import java.util.List;
 public class Socio extends Pessoa{
     private Integer carterinha;
     private EnumStatusSocio enumStatusSocio;
+    private TipoSocio enumTipoSocio;
     private BigDecimal valorMensalidade;
     private List<Dependente> dependente;
 
-    public Socio(Integer carterinha, EnumStatusSocio enumStatusSocio, BigDecimal valorMensalidade, List<Dependente> dependente, String nome, String cpf, String email, Integer telefone) {
+    public Socio(Integer carterinha, EnumStatusSocio enumStatusSocio,TipoSocio enumTipoSocio, BigDecimal valorMensalidade, List<Dependente> dependente, String nome, String cpf, String email, Integer telefone) {
         this.setNomeCompleto(nome);
         this.setEmail(email);
         this.setCpf(cpf);
@@ -18,6 +19,10 @@ public class Socio extends Pessoa{
         this.enumStatusSocio = enumStatusSocio;
         this.valorMensalidade = valorMensalidade;
         this.dependente = dependente;
+        this.enumTipoSocio = enumTipoSocio;
+    }
+
+    public static void add(Socio socios) {
     }
 
     public Integer getCarterinha() {
@@ -50,6 +55,14 @@ public class Socio extends Pessoa{
 
     public void setDependente(List<Dependente> dependente) {
         this.dependente = dependente;
+    }
+
+    public TipoSocio getEnumTipoSocio() {
+        return enumTipoSocio;
+    }
+
+    public void setEnumTipoSocio(TipoSocio enumTipoSocio) {
+        this.enumTipoSocio = enumTipoSocio;
     }
 
     @Override
