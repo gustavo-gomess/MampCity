@@ -11,17 +11,15 @@ public class Inventario {
     private BigDecimal valor;
     private Local localAlocado;
     private LocalDate dataBaixa;
-    private Funcionario usuario;
 
     public Inventario(LocalDate dataCompra, Item tipoItem, String descrição,
-                      BigDecimal valor, Local localAlocado, LocalDate dataBaixa, Funcionario usuario) {
+                      BigDecimal valor, Local localAlocado, LocalDate dataBaixa) {
         this.dataCompra = dataCompra;
         this.tipoItem = tipoItem;
         this.descrição = descrição;
         this.valor = valor;
         this.localAlocado = localAlocado;
         this.dataBaixa = dataBaixa;
-        this.usuario = usuario;
     }
 
     public LocalDate getDataCompra() {
@@ -48,9 +46,6 @@ public class Inventario {
         return dataBaixa;
     }
 
-    public Funcionario getUsuario() {
-        return usuario;
-    }
 
     @Override
     public String toString() {
@@ -61,7 +56,6 @@ public class Inventario {
                 ", valor=" + valor +
                 ", localAlocado=" + localAlocado +
                 ", dataBaixa=" + dataBaixa +
-                ", usuario=" + usuario +
                 '}';
     }
 }

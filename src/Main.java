@@ -29,7 +29,7 @@ public class Main {
                     chamaMenuEstoque();
                     break;
                 case 2: //Inventario
-                    //chamaMenuCadastroCompra();
+                    chamaMenuInventario();
                     break;
                 case 3:// Aluguel
                     //();
@@ -126,4 +126,53 @@ public class Main {
 
 
     }
+
+    public static void chamaMenuInventario() {
+
+        String[] opcoesMenuInventario = {"Cadastrar Produto", "Exluir Produto", "Relatorio", "Voltar"};
+        int menuCadastroInventario = JOptionPane.showOptionDialog(null, "Escolha uma opção:", "Cadastrar",
+                JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE, null, opcoesMenuInventario, opcoesMenuInventario[0]);
+
+        switch (menuCadastroInventario) {
+            case 0: //Cadastrar Invemtario
+                cadastroInventario();
+                break;
+            case 1: // ExcluirSocio
+                //excluirInventario();
+                break;
+            case 2: //geraRelatorioInventario
+                // getRelatorioInventario;
+                break;
+            case 3:
+                chamaMenuPrincipal();
+                break;
+        }
+
+    }
+    private static void cadastroInventario(){
+        LocalDate dataPlanejamento = LocalDate.now();
+        String inputData = JOptionPane.showInputDialog(null, "Digite uma data (formato: dd/MM/yyyy):",
+                "Cadastrar socio", JOptionPane.DEFAULT_OPTION);
+        try {
+            dataPlanejamento = LocalDate.parse(inputData, java.time.format.DateTimeFormatter.ofPattern();
+        } catch (DateTimeParseException e) {
+            JOptionPane.showMessageDialog(null, "Formato inválido!",
+                    "Cadastrar Planejamento", JOptionPane.ERROR_MESSAGE);
+            chamaMenuSocio();
+        }
+
+        /* Object[] selecionaStatus = {
+                Quarto.TipoQuarto.ATIVO(),
+                Quarto.TipoQuarto.MASTER_VIP(),
+                Quarto.TipoQuarto.VIP(),
+                Quarto.TipoQuarto.STAR_VIP.getDescricao(),
+                Quarto.TipoQuarto.BLACK_VIP.getDescricao(),
+        };
+
+        String initialSelectionQuarto = (String) selectionQuarto[0];
+        Object selecQuarto = JOptionPane.showInputDialog(null, "Selecione o quarto escolhido",
+                "Quartos", JOptionPane.QUESTION_MESSAGE, null, selectionQuarto, initialSelectionQuarto);*/
+
+    }
+
 }
