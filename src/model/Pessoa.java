@@ -1,6 +1,6 @@
 package model;
 
-public class Pessoa {
+public abstract class Pessoa {
 
     private String nomeCompleto;
     private String cpf;
