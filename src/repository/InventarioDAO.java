@@ -13,5 +13,8 @@ public class InventarioDAO {
     public static void cadastraItem (Inventario inventario) { novoItem.add(inventario);}
 
     public static List<Inventario> buscaInventario () {
-        return novoItem; }
+        return novoItem;
+    }
+
+
 }
