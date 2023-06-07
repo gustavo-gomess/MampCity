@@ -64,18 +64,4 @@ public class Socio extends Pessoa{
     public void setEnumTipoSocio(TipoSocio enumTipoSocio) {
         this.enumTipoSocio = enumTipoSocio;
     }
-
-    @Override
-    public String toString() {
-        return "Socio{" +
-                ", nome='" + this.getNomeCompleto() + '\'' +
-                ", telefone= '" + this.getTelefone() + '\'' +
-                ", CPF ='" + this.getCpf() + '\'' +
-                ", email=' " + this.getEmail() + '\'' +
-                " arterinha=" + carterinha +
-                ", enumStatusSocio=" + enumStatusSocio +
-                ", valorMensalidade=" + valorMensalidade +
-                ", dependente=" + dependente +
-                '}';
-    }
 }
