@@ -4,7 +4,7 @@ import model.Local;
 import java.util.ArrayList;
 import java.util.List;
 
-public class LocalDAO {
+public class LocalDAO implements IGenericDao<Local>{
 
     static List<Local> novoLocal = new ArrayList<>();
 
@@ -13,6 +13,26 @@ public class LocalDAO {
     }
     public static List<Local> buscaTodosLocais() {
         return novoLocal;
+    }
+
+    @Override
+    public void salvar(Local objeto) {
+
+    }
+
+    @Override
+    public void remover(Local objeto) {
+
+    }
+
+    @Override
+    public List<Local> buscarTodos() {
+        return null;
+    }
+
+    @Override
+    public List<Local> buscarPorNome(String nome) {
+        return null;
     }
 }
 
