@@ -1,6 +1,6 @@
 package model;
 
-public abstract class Pessoa {
+public abstract class Pessoa extends Entity{
 
     private String nomeCompleto;
     private String cpf;
@@ -46,6 +46,17 @@ public abstract class Pessoa {
 
     public void setStatus(String status) {
         this.status = status;
+    }
+
+    @Override
+    public String toString() {
+        return "Pessoa{" +
+                "nomeCompleto='" + nomeCompleto + '\'' +
+                ", cpf='" + cpf + '\'' +
+                ", telefone=" + telefone +
+                ", email='" + email + '\'' +
+                ", status='" + status + '\'' +
+                '}';
     }
 }
 
