@@ -97,10 +97,6 @@ public class Main {
         Object selecQuarto = JOptionPane.showInputDialog(null, "Selecione o quarto escolhido",
                 "Quartos", JOptionPane.QUESTION_MESSAGE, null, selectionQuarto, initialSelectionQuarto);*/
 
-        String enumTipoSocio = JOptionPane.showInputDialog(null, "Digite o tipo de sócio do sócio");
-        Socio socio = new Socio(carteirinha, enumStatusSocio, enumTipoSocio,null, null, nome, cpf, email, telefone);
-        SocioDAO.salvar(socio);
-
     }
 
     private static void excluiSocio (){
@@ -154,7 +150,7 @@ public class Main {
         String inputData = JOptionPane.showInputDialog(null, "Digite uma data (formato: dd/MM/yyyy):",
                 "Cadastrar socio", JOptionPane.DEFAULT_OPTION);
         try {
-            dataPlanejamento = LocalDate.parse(inputData, java.time.format.DateTimeFormatter.ofPattern();
+          //  dataPlanejamento = LocalDate.parse(inputData, java.time.format.DateTimeFormatter.ofPattern();
         } catch (DateTimeParseException e) {
             JOptionPane.showMessageDialog(null, "Formato inválido!",
                     "Cadastrar Planejamento", JOptionPane.ERROR_MESSAGE);
