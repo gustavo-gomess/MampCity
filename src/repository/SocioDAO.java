@@ -11,22 +11,36 @@ public class SocioDAO implements IGenericDao<Socio> {
     }
 
     @Override
-    public void salvar(Socio objeto) {
-
+    public void salvar(Socio socio) {
+        if (socio.getId() == null) {
+            socio.setId((long) (socios.size() + 1));
+        } else {
+            socios.remove((int) (socio.getId() - 1));
+        }
+        socios.add(socio);
     }
 
     @Override
-    public void remover(Socio objeto) {
-
+    public void remover(Socio socio) {
+        if (socio.getId() != null) {
+            socios.remove((int) (socio.getId() - 1));
+        }
     }
 
     @Override
     public List<Socio> buscarTodos() {
-        return null;
+        System.out.println(socios);
+        return socios;
     }
 
     @Override
     public List<Socio> buscarPorNome(String nome) {
-        return null;
+        List<Socio> sociosfiltrados = new ArrayList<>();
+        for (Socio socio : socios) {
+            if (socio.getNomeCompleto().contains(nome)) {
+                sociosfiltrados.add(socio);
+            }
+        }
+        return sociosfiltrados;
     }
 }
