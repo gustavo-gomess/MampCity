@@ -8,17 +8,44 @@ public class Inventario {
     private LocalDate dataCompra;
     private Item tipoItem;
     private String descrição;
+    private Integer quantidade;
     private BigDecimal valor;
-    private Local localAlocado;
     private LocalDate dataBaixa;
 
-    public Inventario(LocalDate dataCompra, Item tipoItem, String descrição,
-                      BigDecimal valor, Local localAlocado, LocalDate dataBaixa) {
+    public Inventario(LocalDate dataCompra, Item tipoItem, String descrição, Integer quantidade, BigDecimal valor, LocalDate dataBaixa) {
         this.dataCompra = dataCompra;
         this.tipoItem = tipoItem;
         this.descrição = descrição;
+        this.quantidade = quantidade;
         this.valor = valor;
-        this.localAlocado = localAlocado;
+        this.dataBaixa = dataBaixa;
+    }
+
+    public void setDataCompra(LocalDate dataCompra) {
+        this.dataCompra = dataCompra;
+    }
+
+    public void setTipoItem(Item tipoItem) {
+        this.tipoItem = tipoItem;
+    }
+
+    public void setDescrição(String descrição) {
+        this.descrição = descrição;
+    }
+
+    public Integer getQuantidade() {
+        return quantidade;
+    }
+
+    public void setQuantidade(Integer quantidade) {
+        this.quantidade = quantidade;
+    }
+
+    public void setValor(BigDecimal valor) {
+        this.valor = valor;
+    }
+
+    public void setDataBaixa(LocalDate dataBaixa) {
         this.dataBaixa = dataBaixa;
     }
 
@@ -30,31 +57,14 @@ public class Inventario {
         return tipoItem;
     }
 
-    public String getDescrição() {
-        return descrição;
-    }
-
-    public BigDecimal getValor() {
-        return valor;
-    }
-
-    public Local getLocalAlocado() {
-        return localAlocado;
-    }
-
-    public LocalDate getDataBaixa() {
-        return dataBaixa;
-    }
-
-
     @Override
     public String toString() {
         return "Inventario{" +
                 "dataCompra=" + dataCompra +
                 ", tipoItem=" + tipoItem +
                 ", descrição='" + descrição + '\'' +
+                ", quantidade=" + quantidade +
                 ", valor=" + valor +
-                ", localAlocado=" + localAlocado +
                 ", dataBaixa=" + dataBaixa +
                 '}';
     }
