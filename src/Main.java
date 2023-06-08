@@ -1,13 +1,18 @@
 import model.Socio;
 import model.EnumStatusSocio;
-import model.*;
+import model.TipoSocio;
+import model.Inventario;
+import model.Aluguel;
+import repository.AluguelDAO;
+import repository.InventarioDAO;
+import repository.LocalDAO;
 import repository.SocioDAO;
 
+
 import javax.swing.*;
-import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.time.format.DateTimeParseException;
-import java.util.List;
+
 
 public class Main {
     public static void main(String[] args) {
@@ -22,52 +27,48 @@ public class Main {
                     "Menu Principal",
                     JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE, null, opcoesMenuPrincipal, opcoesMenuPrincipal[0]);
             switch (opcaoMenuPrincipal) {
-                case 0: //Socio
+                case 0: //Chama o menu do Socio
                     chamaMenuSocio();
                     break;
-                case 1: //Local
-                    chamaMenuEstoque();
+                case 1: //Chama o menu de InfraEstrutura
+                    chamaMenuInfra();
                     break;
-                case 2: //Inventario
+                case 2: //Chama o menu do Inventario
                     chamaMenuInventario();
                     break;
-                case 3:// Aluguel
-                    //();
+                case 3://Chama o menu dos Alugueis
+                    chamaMenuAluguel();
                     break;
-                case 4:;
+                case 4://Chama o menu relatórios
+                    chamaMenuRelatorios();
                     break;
-                case 5:// Relatorio
-                    // chamaMenuVenda();
-                    break;
-                case 6:// Sair
-                    //chamaMenuRelatorios();
+                case 5:
+
                     break;
             }
         }
 
+
     private static void chamaMenuSocio() {
-        String[] opcoesMenuSocio = {"Cadastrar Socio", "Exluir Socio", "Relatorio", "Voltar"};
+        String[] opcoesMenuSocio = {"Cadastrar Socio", "Exluir Socio", "Voltar"};
         int menuCadastroSocio = JOptionPane.showOptionDialog(null, "Escolha uma opção:", "Cadastrar",
                 JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE, null, opcoesMenuSocio, opcoesMenuSocio[0]);
 
         switch (menuCadastroSocio) {
-            case 0: //Cadastrar Socio
+            case 0: // Cadastrar Socio
                 cadastroSocio();
                 break;
-            case 1: // ExcluirSocio
-                //excluirSocio();
+            case 1: // Excluir Socio
+                excluirSocio();
                 break;
-            case 2: //geraRelatorioSocios
-                // getRelatorioSocios;
-                break;
-            case 3:
+            case 2:
                 chamaMenuPrincipal();
                 break;
         }
 
     }
 
-    private static void cadastroSocio(){
+    private static void cadastroSocio() {
         LocalDate dataPlanejamento = LocalDate.now();
         String inputData = JOptionPane.showInputDialog(null, "Digite uma data (formato: dd/MM/yyyy):",
                 "Cadastrar socio", JOptionPane.DEFAULT_OPTION);
@@ -83,91 +84,118 @@ public class Main {
         String email = JOptionPane.showInputDialog(null, "Digite o email do sócio");
         String telefone = JOptionPane.showInputDialog(null, "Digite o telefone do sócio");
         Integer carteirinha = Integer.parseInt(JOptionPane.showInputDialog(null, "Digite o número da carteirinha do sócio"));
+        Object[] selecionaTipoSocio = {
+                TipoSocio.PRINCIPAL,
+                TipoSocio.DEPENDENTE};
+        Object[] selecionaStatusSocio = {
+                EnumStatusSocio.ATIVO,
+                EnumStatusSocio.INATIVO};
 
-
-        /* Object[] selecionaStatus = {
-                Quarto.TipoQuarto.ATIVO(),
-                Quarto.TipoQuarto.MASTER_VIP(),
-                Quarto.TipoQuarto.VIP(),
-                Quarto.TipoQuarto.STAR_VIP.getDescricao(),
-                Quarto.TipoQuarto.BLACK_VIP.getDescricao(),
-        };
-
-        String initialSelectionQuarto = (String) selectionQuarto[0];
-        Object selecQuarto = JOptionPane.showInputDialog(null, "Selecione o quarto escolhido",
-                "Quartos", JOptionPane.QUESTION_MESSAGE, null, selectionQuarto, initialSelectionQuarto);*/
 
     }
 
-    private static void excluiSocio (){
+    private static void excluirSocio (){
 
     }
 
-    private static void chamaMenuEstoque (){
-        String[] opcoesEstoque = {"Cadastrar Estoque", "Listar Estoques", "Voltar"};
-        int menuCadastroEstoque = JOptionPane.showOptionDialog(null, "Escolha uma opção:", "Cadastrar",
-                JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE, null, opcoesEstoque, opcoesEstoque[0]);
+    private static void chamaMenuInfra () {
+        String[] opcoesLocal = {"Cadastrar Local", "Listar Locais", "Voltar"};
+        int menuCadastroLocal = JOptionPane.showOptionDialog(null, "Escolha uma opção:", "Cadastrar",
+                JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE, null, opcoesLocal, opcoesLocal[0]);
 
-        switch (menuCadastroEstoque){
-            case 1:
-                //adicionaEstoque;
+        switch (menuCadastroLocal) {
+            case 0: // Cadastra um novo local
+                cadastrarLocal();
+                break;
+            case 1: // Lista os locais cadastrados
+                listarLocais();
                 break;
             case 2:
-                //listaEstoque;
-                break;
-            case 3:
                 chamaMenuPrincipal();
                 break;
         }
 
+    }
+
+    public static void cadastrarLocal (){
+
+    }
+
+    public static void listarLocais (){
 
     }
 
     public static void chamaMenuInventario() {
 
-        String[] opcoesMenuInventario = {"Cadastrar Produto", "Exluir Produto", "Relatorio", "Voltar"};
+        String[] opcoesMenuInventario = {"Cadastrar Produto", "Excluir Produto", "Voltar"};
         int menuCadastroInventario = JOptionPane.showOptionDialog(null, "Escolha uma opção:", "Cadastrar",
                 JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE, null, opcoesMenuInventario, opcoesMenuInventario[0]);
 
         switch (menuCadastroInventario) {
-            case 0: //Cadastrar Invemtario
+            case 0: // Cadastrar novo produto no Inventário
                 cadastroInventario();
                 break;
-            case 1: // ExcluirSocio
-                //excluirInventario();
+            case 1: // Excluir um produto do Inventário
+                excluirInventario();
                 break;
-            case 2: //geraRelatorioInventario
-                // getRelatorioInventario;
-                break;
-            case 3:
+            case 2:// Voltar
                 chamaMenuPrincipal();
                 break;
         }
 
     }
-    private static void cadastroInventario(){
-        LocalDate dataPlanejamento = LocalDate.now();
-        String inputData = JOptionPane.showInputDialog(null, "Digite uma data (formato: dd/MM/yyyy):",
-                "Cadastrar socio", JOptionPane.DEFAULT_OPTION);
-        try {
-          //  dataPlanejamento = LocalDate.parse(inputData, java.time.format.DateTimeFormatter.ofPattern();
-        } catch (DateTimeParseException e) {
-            JOptionPane.showMessageDialog(null, "Formato inválido!",
-                    "Cadastrar Planejamento", JOptionPane.ERROR_MESSAGE);
-            chamaMenuSocio();
+    private static void cadastroInventario(){}
+
+    public static void excluirInventario(){}
+
+
+    public static void chamaMenuAluguel(){
+
+        String[] opcoesMenuAluguel = {"Cadastrar Aluguel", "Listar Alugueis", "Voltar"};
+        int menuCadastroAluguel = JOptionPane.showOptionDialog(null, "Escolha uma opção:", "Cadastrar",
+                JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE, null, opcoesMenuAluguel, opcoesMenuAluguel[0]);
+
+        switch (menuCadastroAluguel) {
+            case 0: // Cadastrar novo produto no Inventário
+                cadastroAluguel();
+                break;
+            case 1: // Lista os alugueis no momento
+                listarAlugueis();
+                break;
+            case 2:// Voltar
+                chamaMenuPrincipal();
+                break;
         }
+    }
+    private static void cadastroAluguel (){
+    }
 
-        /* Object[] selecionaStatus = {
-                Quarto.TipoQuarto.ATIVO(),
-                Quarto.TipoQuarto.MASTER_VIP(),
-                Quarto.TipoQuarto.VIP(),
-                Quarto.TipoQuarto.STAR_VIP.getDescricao(),
-                Quarto.TipoQuarto.BLACK_VIP.getDescricao(),
-        };
+    public static void listarAlugueis(){
 
-        String initialSelectionQuarto = (String) selectionQuarto[0];
-        Object selecQuarto = JOptionPane.showInputDialog(null, "Selecione o quarto escolhido",
-                "Quartos", JOptionPane.QUESTION_MESSAGE, null, selectionQuarto, initialSelectionQuarto);*/
+    }
+    private static void chamaMenuRelatorios() {
+
+        String[] opcoesMenuRelatorios = {"Relatório de Socios", "Relatório de Locais", "Relatório de Produtos", "Relatório de Alugueis", "Voltar"};
+        int menuCadastroInventario = JOptionPane.showOptionDialog(null, "Escolha uma opção:", "Cadastrar",
+                JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE, null, opcoesMenuRelatorios, opcoesMenuRelatorios[0]);
+
+        switch (menuCadastroInventario) {
+            case 0: // Relatórios de Sócios
+                SocioDAO.buscaTodos();
+                break;
+            case 1: // Relatórios de locais disponíveis
+                LocalDAO.buscaTodosLocais();
+                break;
+            case 2: // Relatório de produtos inventáriados
+                InventarioDAO.buscaInventario();
+                break;
+            case 3: // Relatório de Alugueis
+                AluguelDAO.buscaTodosAlugueis();
+                break;
+            case 4: // Voltar
+                chamaMenuPrincipal();
+                break;
+        }
 
     }
 
