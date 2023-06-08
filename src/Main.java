@@ -16,10 +16,8 @@ import java.time.format.DateTimeParseException;
 
 public class Main {
     public static void main(String[] args) {
-        //AluguelDAO.salvarAluguel();
-        //InventarioDAO.cadastraItem();
-        //SocioDAO.salvar();
         chamaMenuPrincipal();
+
     }
         private static void chamaMenuPrincipal() {
             String[] opcoesMenuPrincipal = {"Socio","Infraestrutura", "Inventário", "Aluguel", "Relatório", "Sair"};
@@ -69,29 +67,32 @@ public class Main {
     }
 
     private static void cadastroSocio() {
-        LocalDate dataPlanejamento = LocalDate.now();
-        String inputData = JOptionPane.showInputDialog(null, "Digite uma data (formato: dd/MM/yyyy):",
-                "Cadastrar socio", JOptionPane.DEFAULT_OPTION);
         try {
-            dataPlanejamento = LocalDate.parse(inputData, java.time.format.DateTimeFormatter.ofPattern("dd/MM/yyyy"));
-        } catch (DateTimeParseException e) {
-            JOptionPane.showMessageDialog(null, "Formato inválido!",
-                    "Cadastrar Planejamento", JOptionPane.ERROR_MESSAGE);
+            LocalDate dataPlanejamento = LocalDate.now();
+            String inputData = JOptionPane.showInputDialog(null, "Digite uma data (formato: dd/MM/yyyy):",
+                    "Cadastrar socio", JOptionPane.DEFAULT_OPTION);
+            try {
+                dataPlanejamento = LocalDate.parse(inputData, java.time.format.DateTimeFormatter.ofPattern("dd/MM/yyyy"));
+            } catch (DateTimeParseException e) {
+                JOptionPane.showMessageDialog(null, "Formato inválido!",
+                        "Cadastrar Planejamento", JOptionPane.ERROR_MESSAGE);
+                chamaMenuSocio();
+            }
+            String nome = JOptionPane.showInputDialog(null, "Digite o nome do sócio");
+            String cpf = JOptionPane.showInputDialog(null, "Digite o CPF do sócio");
+            String email = JOptionPane.showInputDialog(null, "Digite o email do sócio");
+            String telefone = JOptionPane.showInputDialog(null, "Digite o telefone do sócio");
+            Integer carteirinha = Integer.parseInt(JOptionPane.showInputDialog(null, "Digite o número da carteirinha do sócio"));
+            Object[] selecionaTipoSocio = {
+                    TipoSocio.PRINCIPAL,
+                    TipoSocio.DEPENDENTE};
+            Object[] selecionaStatusSocio = {
+                    EnumStatusSocio.ATIVO,
+                    EnumStatusSocio.INATIVO};
+
+        }catch (Exception e){
             chamaMenuSocio();
         }
-        String nome = JOptionPane.showInputDialog(null, "Digite o nome do sócio");
-        String cpf = JOptionPane.showInputDialog(null, "Digite o CPF do sócio");
-        String email = JOptionPane.showInputDialog(null, "Digite o email do sócio");
-        String telefone = JOptionPane.showInputDialog(null, "Digite o telefone do sócio");
-        Integer carteirinha = Integer.parseInt(JOptionPane.showInputDialog(null, "Digite o número da carteirinha do sócio"));
-        Object[] selecionaTipoSocio = {
-                TipoSocio.PRINCIPAL,
-                TipoSocio.DEPENDENTE};
-        Object[] selecionaStatusSocio = {
-                EnumStatusSocio.ATIVO,
-                EnumStatusSocio.INATIVO};
-
-
     }
 
     private static void excluirSocio (){

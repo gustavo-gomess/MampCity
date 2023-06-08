@@ -7,18 +7,14 @@ public class Socio extends Pessoa{
     private Integer carterinha;
     private EnumStatusSocio enumStatusSocio;
     private TipoSocio enumTipoSocio;
-    private BigDecimal valorMensalidade;
-    private List<Dependente> dependente;
 
-    public Socio(Integer carterinha, EnumStatusSocio enumStatusSocio,TipoSocio enumTipoSocio, BigDecimal valorMensalidade, List<Dependente> dependente, String nome, String cpf, String email, Integer telefone) {
+    public Socio(Integer carterinha, EnumStatusSocio enumStatusSocio,TipoSocio enumTipoSocio, String nome, String cpf, String email, Integer telefone) {
         this.setNomeCompleto(nome);
         this.setEmail(email);
         this.setCpf(cpf);
         this.setTelefone(telefone);
         this.carterinha = carterinha;
         this.enumStatusSocio = enumStatusSocio;
-        this.valorMensalidade = valorMensalidade;
-        this.dependente = dependente;
         this.enumTipoSocio = enumTipoSocio;
     }
 
@@ -41,21 +37,6 @@ public class Socio extends Pessoa{
         this.enumStatusSocio = enumStatusSocio;
     }
 
-    public BigDecimal getValorMensalidade() {
-        return valorMensalidade;
-    }
-
-    public void setValorMensalidade(BigDecimal valorMensalidade) {
-        this.valorMensalidade = valorMensalidade;
-    }
-
-    public List<Dependente> getDependente() {
-        return dependente;
-    }
-
-    public void setDependente(List<Dependente> dependente) {
-        this.dependente = dependente;
-    }
 
     public TipoSocio getEnumTipoSocio() {
         return enumTipoSocio;
