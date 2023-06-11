@@ -1,6 +1,6 @@
 package model;
 
-public class Local {
+public class Local extends Entity {
     private String nome;
     private String descricacaoLocal;
 
