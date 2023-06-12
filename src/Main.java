@@ -1,8 +1,4 @@
-import model.Socio;
-import model.EnumStatusSocio;
-import model.TipoSocio;
-import model.Inventario;
-import model.Aluguel;
+import model.*;
 import repository.AluguelDAO;
 import repository.InventarioDAO;
 import repository.LocalDAO;
