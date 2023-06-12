@@ -4,7 +4,7 @@ import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Aluguel {
+public class Aluguel extends Entity{
     private Socio socio;
     private Local local;
     private String descricaoAluguel;
@@ -18,7 +18,6 @@ public class Aluguel {
         this.dataHoraFim = dataHoraFim;
         this.visitantes = visitantes;
     }
-    public void alugar (){}
 
     public Socio getSocio() {
         return socio;
