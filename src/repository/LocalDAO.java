@@ -10,9 +10,6 @@ public class LocalDAO implements IGenericDao<Local>{
 
     static List<Local> novoLocal = new ArrayList<>();
 
-    public static void cadastrarLocal(Local local ) { novoLocal.add(local);
-
-    }
     public static List<Local> buscaTodosLocais() {
         return novoLocal;
     }

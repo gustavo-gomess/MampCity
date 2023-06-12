@@ -9,9 +9,6 @@ public class AluguelDAO implements IGenericDao<Aluguel> {
 
     static List<Aluguel> novoAluguel = new ArrayList<>();
 
-    public static void salvarAluguel(Aluguel aluguel) {
-        novoAluguel.add(aluguel);
-    }
 
     public static List<Aluguel> buscaTodosAlugueis() {
         return novoAluguel;

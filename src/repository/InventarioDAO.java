@@ -10,8 +10,6 @@ public class InventarioDAO implements IGenericDao<Inventario> {
 
     static List<Inventario> novoItem = new ArrayList<>();
 
-    public static void cadastraItem (Inventario inventario) { novoItem.add(inventario);}
-
     public static List<Inventario> buscaInventario () {
         return novoItem;
     }
