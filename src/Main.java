@@ -56,7 +56,8 @@ public class Main {
                 cadastroSocio();
                 break;
             case 1: // Altera Sócio
-                alteraSocio();
+                socio = selecaoDeSocio();
+                alteraSocio(socio);
                 break;
             case 2:// Excluir Socio
                 excluirSocio();
@@ -69,16 +70,6 @@ public class Main {
 
     private static void cadastroSocio() {
         try {
-            LocalDate dataPlanejamento = LocalDate.now();
-            String inputData = JOptionPane.showInputDialog(null, "Digite uma data (formato: dd/MM/yyyy):",
-                    "Cadastrar socio", JOptionPane.DEFAULT_OPTION);
-            try {
-                dataPlanejamento = LocalDate.parse(inputData, java.time.format.DateTimeFormatter.ofPattern("dd/MM/yyyy"));
-            } catch (DateTimeParseException e) {
-                JOptionPane.showMessageDialog(null, "Formato inválido!",
-                        "Cadastrar Planejamento", JOptionPane.ERROR_MESSAGE);
-                chamaMenuSocio();
-            }
             String nome = JOptionPane.showInputDialog(null, "Digite o nome do sócio");
             String cpf = JOptionPane.showInputDialog(null, "Digite o CPF do sócio");
             String email = JOptionPane.showInputDialog(null, "Digite o email do sócio");
@@ -117,8 +108,19 @@ public class Main {
     }
 
 
-    private static void alteraSocio(){
+    private static Socio alteraSocio(Socio socio){
+        String carterinha = JOptionPane.showInputDialog(null, "Digite o  numero da carterinha do socio: ", socio.getCarterinha());
 
+        if (carterinha.equals(carterinha)) {
+            System.out.println(carterinha);
+            String alterasocio = JOptionPane.showInputDialog(null, "Digite o nome do sócio");
+            Integer telefone = Integer.parseInt(JOptionPane.showInputDialog(null, "Digite o telefone do sócio"));
+            String email = JOptionPane.showInputDialog(null, "Digite o email do sócio");
+            Socio novosocio = new Socio(alterasocio,telefone,email);
+            System.out.println(novosocio);
+            return novosocio;
+        }
+        return socio;
     }
 
     private static void excluirSocio() {
@@ -129,6 +131,7 @@ public class Main {
         } else {
             chamaMenuSocio();
         }
+        chamaMenuSocio();
     }
 
     private static void chamaMenuInfra() {

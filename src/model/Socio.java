@@ -15,7 +15,10 @@ public class Socio extends Pessoa{
         this.enumTipoSocio = enumTipoSocio;
     }
 
-    public static void add(Socio socios) {
+    public Socio(String nome,  Integer telefone,String email) {
+        this.setNomeCompleto(nome);
+        this.setTelefone(telefone);
+        this.setEmail(email);
     }
 
     public Integer getCarterinha() {
