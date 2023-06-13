@@ -47,20 +47,22 @@ public class Main {
 
 
     private static void chamaMenuSocio() {
-        String[] opcoesMenuSocio = {"Cadastrar Socio", "Exluir Socio", "Voltar"};
+        String[] opcoesMenuSocio = {"Cadastrar Socio", "Alterar Cadastro", "Exluir Socio", "Voltar"};
         int menuCadastroSocio = JOptionPane.showOptionDialog(null, "Escolha uma opção:", "Cadastrar",
                 JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE, null, opcoesMenuSocio, opcoesMenuSocio[0]);
         Socio socio = null;
         switch (menuCadastroSocio) {
-            case 0: // Cadastrar Socio
+            case 0: // Cadastrar Sócio
                 cadastroSocio();
                 break;
-            case 1: // Excluir Socio
+            case 1: // Altera Sócio
+                alteraSocio();
+                break;
+            case 2:// Excluir Socio
                 excluirSocio();
                 break;
-            case 2:
+            case 3:
                 chamaMenuPrincipal();
-                break;
         }
         chamaMenuPrincipal();
     }
@@ -82,16 +84,17 @@ public class Main {
             String email = JOptionPane.showInputDialog(null, "Digite o email do sócio");
             Integer telefone = Integer.parseInt(JOptionPane.showInputDialog(null, "Digite o telefone do sócio"));
             Integer carteirinha = Integer.parseInt(JOptionPane.showInputDialog(null, "Digite o número da carteirinha do sócio"));
-            Object[] selecionaTipoSocio = {
-                    TipoSocio.PRINCIPAL,
-                    TipoSocio.DEPENDENTE};
-            Object[] selecionaStatusSocio = {
-                    StatusSocio.ATIVO,
-                    StatusSocio.INATIVO};
+            Object[] selecionaTipoSocio = { TipoSocio.PRINCIPAL, TipoSocio.DEPENDENTE };
+            int tipoSocioIndex = JOptionPane.showOptionDialog(null, "Selecione o tipo de sócio", "Tipo de Sócio",
+                    JOptionPane.DEFAULT_OPTION, JOptionPane.PLAIN_MESSAGE, null, selecionaTipoSocio, selecionaTipoSocio[0]);
+            Object[] selecionaStatusSocio = { StatusSocio.ATIVO, StatusSocio.INATIVO };
+            int statusSocioIndex = JOptionPane.showOptionDialog(null, "Selecione o status de sócio", "Status de Sócio",
+                    JOptionPane.DEFAULT_OPTION, JOptionPane.PLAIN_MESSAGE, null, selecionaStatusSocio, selecionaStatusSocio[0]);
             SocioDAO socioDAO = new SocioDAO();
-            Socio socio = new Socio(carteirinha, (StatusSocio) selecionaStatusSocio[0], (TipoSocio) selecionaTipoSocio[0], nome, cpf, email, telefone);
+            Socio socio = new Socio(carteirinha, (StatusSocio) selecionaStatusSocio[statusSocioIndex],
+                    (TipoSocio) selecionaTipoSocio[tipoSocioIndex], nome, cpf, email, telefone);
+                JOptionPane.showMessageDialog(null, "CADASTRO EFETUADO COM SUCESSO");
             socioDAO.salvar(socio);
-            System.out.println(socio);
 
         } catch (Exception e) {
             chamaMenuSocio();
@@ -113,6 +116,11 @@ public class Main {
         return socioDAO;
     }
 
+
+    private static void alteraSocio(){
+
+    }
+
     private static void excluirSocio() {
         Socio socio = null;
         socio = selecaoDeSocio();
@@ -124,25 +132,27 @@ public class Main {
     }
 
     private static void chamaMenuInfra() {
-        String[] opcoesLocal = {"Cadastrar nova Infraestrutura", "Excluir  Infraestrutura", "Voltar"};
+        String[] opcoesLocal = {"Cadastrar nova Infraestrutura","Alterar Infraestrutura", "Excluir  Infraestrutura", "Voltar"};
         int menuCadastroLocal = JOptionPane.showOptionDialog(null, "Escolha uma opção:", "Cadastrar",
                 JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE, null, opcoesLocal, opcoesLocal[0]);
 
         switch (menuCadastroLocal) {
             case 0: // Cadastra um novo local
-                cadastrarLocal();
+                cadastrarInfra();
                 break;
-            case 1: // Lista os locais cadastrados
+            case 1: // Altera um local cadastrado;
+                alteraInfra();
+                break;
+            case 2:// Excluir um local cadastrado
                 excluirInfra();
                 break;
-            case 2:
+            case 3:
                 chamaMenuPrincipal();
-                break;
         }
         chamaMenuPrincipal();
     }
 
-    public static void cadastrarLocal() {
+    public static void cadastrarInfra() {
         try {
             String nome = JOptionPane.showInputDialog(null, "Digite o nome da nova Infraestrutura!");
             String descricao = JOptionPane.showInputDialog(null, "Digite a descrição da Infraestrutura!");
@@ -160,6 +170,10 @@ public class Main {
     public static LocalDAO getLocalDAO() {
         LocalDAO localDAO = new LocalDAO();
         return localDAO;
+    }
+
+    public static void alteraInfra (){
+
     }
 
     public static void excluirInfra() {
