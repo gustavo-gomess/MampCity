@@ -77,14 +77,16 @@ public class Main {
             String nome = JOptionPane.showInputDialog(null, "Digite o nome do sócio");
             String cpf = JOptionPane.showInputDialog(null, "Digite o CPF do sócio");
             String email = JOptionPane.showInputDialog(null, "Digite o email do sócio");
-            String telefone = JOptionPane.showInputDialog(null, "Digite o telefone do sócio");
+            Integer telefone = Integer.parseInt(JOptionPane.showInputDialog(null, "Digite o telefone do sócio"));
             Integer carteirinha = Integer.parseInt(JOptionPane.showInputDialog(null, "Digite o número da carteirinha do sócio"));
             Object[] selecionaTipoSocio = {
                     TipoSocio.PRINCIPAL,
                     TipoSocio.DEPENDENTE};
             Object[] selecionaStatusSocio = {
-                    EnumStatusSocio.ATIVO,
-                    EnumStatusSocio.INATIVO};
+                    StatusSocio.ATIVO,
+                    StatusSocio.INATIVO};
+            Socio socio = new Socio(carteirinha,(StatusSocio) selecionaStatusSocio[0], (TipoSocio) selecionaTipoSocio[0], nome, cpf, email, telefone);
+            SocioDAO.salvar(socio);
 
         }catch (Exception e){
             chamaMenuSocio();
