@@ -1,20 +1,17 @@
 package model;
 
-import java.math.BigDecimal;
-import java.util.List;
-
 public class Socio extends Pessoa{
     private Integer carterinha;
-    private EnumStatusSocio enumStatusSocio;
+    private StatusSocio statusSocio;
     private TipoSocio enumTipoSocio;
 
-    public Socio(Integer carterinha, EnumStatusSocio enumStatusSocio,TipoSocio enumTipoSocio, String nome, String cpf, String email, Integer telefone) {
+    public Socio(Integer carterinha, StatusSocio statusSocio, TipoSocio enumTipoSocio, String nome, String cpf, String email, Integer telefone) {
         this.setNomeCompleto(nome);
         this.setEmail(email);
         this.setCpf(cpf);
         this.setTelefone(telefone);
         this.carterinha = carterinha;
-        this.enumStatusSocio = enumStatusSocio;
+        this.statusSocio = statusSocio;
         this.enumTipoSocio = enumTipoSocio;
     }
 
@@ -29,12 +26,12 @@ public class Socio extends Pessoa{
         this.carterinha = carterinha;
     }
 
-    public EnumStatusSocio getEnumStatusSocio() {
-        return enumStatusSocio;
+    public StatusSocio getEnumStatusSocio() {
+        return statusSocio;
     }
 
-    public void setEnumStatusSocio(EnumStatusSocio enumStatusSocio) {
-        this.enumStatusSocio = enumStatusSocio;
+    public void setEnumStatusSocio(StatusSocio statusSocio) {
+        this.statusSocio = statusSocio;
     }
 
 
