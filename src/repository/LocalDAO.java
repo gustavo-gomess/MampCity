@@ -16,19 +16,12 @@ public class LocalDAO implements IGenericDao<Local>{
 
     @Override
     public void salvar(Local local) {
-        if (local.getId() == null) {
-            local.setId((long) (novoLocal.size() + 1));
-        } else {
-            novoLocal.remove((int) (local.getId() - 1));
-        }
         novoLocal.add(local);
     }
 
     @Override
     public void remover(Local local) {
-        if (local.getId() != null) {
-            novoLocal.remove((int) (local.getId() - 1));
-        }
+            novoLocal.remove(local);
     }
 
     @Override
@@ -39,7 +32,24 @@ public class LocalDAO implements IGenericDao<Local>{
 
     @Override
     public List<Local> buscarPorNome(String nome) {
-        return null;
+        List<Local> localfiltrados = new ArrayList<>();
+        for (Local local : novoLocal) {
+            if (local.getNome().contains(nome)) {
+                localfiltrados.add(local);
+            }
+        }
+        return localfiltrados;
+    }
+
+    public Object[] findLocalInArray() {
+        List<Local>  locais = buscarTodos();
+        List<String> localsNomes = new ArrayList<>();
+
+        for (Local local : locais) {
+            localsNomes.add(local.getNome());
+        }
+
+        return localsNomes.toArray();
     }
 }
 

@@ -4,18 +4,13 @@ import java.math.BigDecimal;
 import java.time.LocalDate;
 
 public class Inventario {
-
     private LocalDate dataCompra;
-    private Item tipoItem;
-    private String descrição;
     private Integer quantidade;
     private BigDecimal valor;
     private LocalDate dataBaixa;
 
-    public Inventario(LocalDate dataCompra, Item tipoItem, String descrição, Integer quantidade, BigDecimal valor, LocalDate dataBaixa) {
+    public Inventario(LocalDate dataCompra, Integer quantidade, BigDecimal valor, LocalDate dataBaixa) {
         this.dataCompra = dataCompra;
-        this.tipoItem = tipoItem;
-        this.descrição = descrição;
         this.quantidade = quantidade;
         this.valor = valor;
         this.dataBaixa = dataBaixa;
@@ -23,14 +18,6 @@ public class Inventario {
 
     public void setDataCompra(LocalDate dataCompra) {
         this.dataCompra = dataCompra;
-    }
-
-    public void setTipoItem(Item tipoItem) {
-        this.tipoItem = tipoItem;
-    }
-
-    public void setDescrição(String descrição) {
-        this.descrição = descrição;
     }
 
     public Integer getQuantidade() {
@@ -53,16 +40,10 @@ public class Inventario {
         return dataCompra;
     }
 
-    public Item getTipoItem() {
-        return tipoItem;
-    }
-
     @Override
     public String toString() {
         return "Inventario{" +
                 "dataCompra=" + dataCompra +
-                ", tipoItem=" + tipoItem +
-                ", descrição='" + descrição + '\'' +
                 ", quantidade=" + quantidade +
                 ", valor=" + valor +
                 ", dataBaixa=" + dataBaixa +

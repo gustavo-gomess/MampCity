@@ -1,5 +1,6 @@
 package repository;
 
+import model.Pessoa;
 import model.Socio;
 import java.util.ArrayList;
 import java.util.List;
@@ -42,5 +43,15 @@ public class SocioDAO implements IGenericDao<Socio> {
             }
         }
         return sociosfiltrados;
+    }
+    public Object[] findSocioInArray() {
+        List<Socio> socios = buscarTodos();
+        List<String> sociosNomes = new ArrayList<>();
+
+        for (Socio socio : socios) {
+            sociosNomes.add(socio.getNomeCompleto());
+        }
+
+        return sociosNomes.toArray();
     }
 }
