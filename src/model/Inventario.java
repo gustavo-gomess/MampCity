@@ -9,7 +9,6 @@ public class Inventario extends Entity{
     private Integer quantidade;
     private BigDecimal valor;
 
-
     public Inventario(Item item, Integer quantidade, BigDecimal valor) {
         this.item = item;
         this.quantidade = quantidade;
@@ -35,7 +34,6 @@ public class Inventario extends Entity{
     public BigDecimal getValor() {
         return valor;
     }
-
     public void setValor(BigDecimal valor) {
         this.valor = valor;
     }
@@ -43,7 +41,6 @@ public class Inventario extends Entity{
     @Override
     public String toString() {
         return "Inventario{" +
-                "item=" + item +
                 ", quantidade=" + quantidade +
                 ", valor=" + valor +
                 '}';

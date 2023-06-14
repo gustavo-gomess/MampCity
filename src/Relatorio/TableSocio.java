@@ -55,7 +55,7 @@ public class TableSocio extends AbstractTableModel {
             case INDEX_CARTERINHA:
                 return registroSocio.getCarterinha();
             case INDEX_STATUS:
-                return registroSocio.getStatus();
+                return registroSocio.getEnumStatusSocio();
             case INDEX_TIPO:
                 return registroSocio.getEnumTipoSocio();
             default:
