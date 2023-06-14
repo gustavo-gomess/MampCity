@@ -283,7 +283,6 @@ public class Main {
                 break;
         }
     }
-
     private static Aluguel cadastroAluguel() {
 
         Socio socio = selecaoDeSocio();
@@ -313,15 +312,20 @@ public class Main {
 
     }
 
-    private static void chamaMenuRelatorios() {
+    private static void chamaRelatorioSocio() {
+        List<Socio> socios = getSocioDAO().buscarTodos();
+        RelatorioSocioForm.emitirRelatorio(socios);
+    }
+
+    public static void chamaMenuRelatorios() {
 
         String[] opcoesMenuRelatorios = {"Relatório de Socios", "Relatório de Locais", "Relatório de Produtos", "Relatório de Alugueis", "Voltar"};
-        int menuCadastroInventario = JOptionPane.showOptionDialog(null, "Escolha uma opção:", "Cadastrar",
+        int MenuRelatorios = JOptionPane.showOptionDialog(null, "Escolha uma opção:", "Cadastrar",
                 JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE, null, opcoesMenuRelatorios, opcoesMenuRelatorios[0]);
 
-        switch (menuCadastroInventario) {
+        switch (MenuRelatorios) {
             case 0: // Relatórios de Sócios
-                SocioDAO.buscaTodos();
+                chamaRelatorioSocio();
                 break;
             case 1: // Relatórios de locais disponíveis
                 LocalDAO.buscaTodosLocais();
