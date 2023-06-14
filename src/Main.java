@@ -221,37 +221,13 @@ public class Main {
 
     private static void cadastroInventario() {
         try {
-            LocalDate dataCompra = LocalDate.now();
-            String inputData = JOptionPane.showInputDialog(null, "Digite uma data (formato: dd/MM/yyyy):",
-                    "Cadastrar data da compra", JOptionPane.DEFAULT_OPTION);
-            try {
-                dataCompra = LocalDate.parse(inputData, java.time.format.DateTimeFormatter.ofPattern("dd/MM/yyyy"));
-            } catch (DateTimeParseException e) {
-                JOptionPane.showMessageDialog(null, "Formato inválido!",
-                        "Cadastrar data da compra", JOptionPane.ERROR_MESSAGE);
-                chamaMenuSocio();
-            }
-
-            LocalDate dataBaixa = LocalDate.now();
-            String inputbaixa = JOptionPane.showInputDialog(null, "Digite uma data (formato: dd/MM/yyyy):",
-                    "Cadastrar data de baixa", JOptionPane.DEFAULT_OPTION);
-            try {
-                dataBaixa = LocalDate.parse(inputData, java.time.format.DateTimeFormatter.ofPattern("dd/MM/yyyy"));
-            } catch (DateTimeParseException e) {
-                JOptionPane.showMessageDialog(null, "Formato inválido!",
-                        "Cadastrar data de baixa", JOptionPane.ERROR_MESSAGE);
-                chamaMenuSocio();
-            }
-
             String input = JOptionPane.showInputDialog(null, "Digite o valor do item:");
             BigDecimal valor = new BigDecimal(input);
 
             Integer quantidade = Integer.valueOf(JOptionPane.showInputDialog(null, "Digite a quantidade"));
 
-
-
             InventarioDAO inventarioDAO = new InventarioDAO();
-            Inventario inventario = new Inventario(dataCompra,quantidade,valor,dataBaixa);
+            Inventario inventario = new Inventario(quantidade,valor);
             inventarioDAO.salvar(inventario);
             System.out.println(inventario);
 
