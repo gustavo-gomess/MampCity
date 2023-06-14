@@ -3,13 +3,24 @@ package model;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 
-public class Inventario {
+public class Inventario extends Entity{
+
+    private Item item;
     private Integer quantidade;
     private BigDecimal valor;
 
-    public Inventario( Integer quantidade, BigDecimal valor) {
+    public Inventario(Item item, Integer quantidade, BigDecimal valor) {
+        this.item = item;
         this.quantidade = quantidade;
         this.valor = valor;
+    }
+
+    public Item getItem() {
+        return item;
+    }
+
+    public void setItem(Item item) {
+        this.item = item;
     }
 
     public Integer getQuantidade() {
@@ -20,6 +31,9 @@ public class Inventario {
         this.quantidade = quantidade;
     }
 
+    public BigDecimal getValor() {
+        return valor;
+    }
     public void setValor(BigDecimal valor) {
         this.valor = valor;
     }
