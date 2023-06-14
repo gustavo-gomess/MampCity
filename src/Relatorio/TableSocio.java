@@ -12,11 +12,12 @@ public class TableSocio extends AbstractTableModel {
 
     public static final int INDEX_NOME = 0;
     public static final int INDEX_EMAIL = 1;
-    public static final int INDEX_CPF= 2;
+    public static final int INDEX_CPF = 2;
     public static final int INDEX_TELEFONE = 3;
     public static final int INDEX_CARTERINHA = 4;
     public static final int INDEX_STATUS = 5;
     public static final int INDEX_TIPO = 6;
+    public static final int INDEX_ESCONDIDO = 6;
     protected String[] nomeColunas;
     protected Vector<Socio> vetorDados;
 
@@ -28,6 +29,15 @@ public class TableSocio extends AbstractTableModel {
     @Override
     public String getColumnName(int column) {
         return nomeColunas[column];
+    }
+
+    @Override
+    public boolean isCellEditable(int linha, int coluna) {
+        if (coluna == INDEX_ESCONDIDO) {
+            return false;
+        } else {
+            return true;
+        }
     }
 
     @Override
