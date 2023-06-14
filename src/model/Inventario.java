@@ -3,21 +3,25 @@ package model;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 
-public class Inventario {
-    private LocalDate dataCompra;
+public class Inventario extends Entity{
+
+    private Item item;
     private Integer quantidade;
     private BigDecimal valor;
-    private LocalDate dataBaixa;
 
-    public Inventario(LocalDate dataCompra, Integer quantidade, BigDecimal valor, LocalDate dataBaixa) {
-        this.dataCompra = dataCompra;
+
+    public Inventario(Item item, Integer quantidade, BigDecimal valor) {
+        this.item = item;
         this.quantidade = quantidade;
         this.valor = valor;
-        this.dataBaixa = dataBaixa;
     }
 
-    public void setDataCompra(LocalDate dataCompra) {
-        this.dataCompra = dataCompra;
+    public Item getItem() {
+        return item;
+    }
+
+    public void setItem(Item item) {
+        this.item = item;
     }
 
     public Integer getQuantidade() {
@@ -28,25 +32,20 @@ public class Inventario {
         this.quantidade = quantidade;
     }
 
+    public BigDecimal getValor() {
+        return valor;
+    }
+
     public void setValor(BigDecimal valor) {
         this.valor = valor;
-    }
-
-    public void setDataBaixa(LocalDate dataBaixa) {
-        this.dataBaixa = dataBaixa;
-    }
-
-    public LocalDate getDataCompra() {
-        return dataCompra;
     }
 
     @Override
     public String toString() {
         return "Inventario{" +
-                "dataCompra=" + dataCompra +
+                "item=" + item +
                 ", quantidade=" + quantidade +
                 ", valor=" + valor +
-                ", dataBaixa=" + dataBaixa +
                 '}';
     }
 }
