@@ -19,6 +19,10 @@ public class Aluguel extends Entity{
         this.visitantes = visitantes;
     }
 
+    public Aluguel(Socio socio, Local local, String descricaoAluguel, LocalDateTime inicio, LocalDateTime fim, List<String> visitantes) {
+        super();
+    }
+
     public Socio getSocio() {
         return socio;
     }
