@@ -8,7 +8,9 @@ import repository.SocioDAO;
 import javax.swing.*;
 import java.math.BigDecimal;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.time.format.DateTimeParseException;
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -50,7 +52,7 @@ public class Main {
         String[] opcoesMenuSocio = {"Cadastrar Socio", "Alterar Cadastro", "Exluir Socio", "Voltar"};
         int menuCadastroSocio = JOptionPane.showOptionDialog(null, "Escolha uma opção:", "Cadastrar",
                 JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE, null, opcoesMenuSocio, opcoesMenuSocio[0]);
-        Socio socio = null;
+        Socio socio ;
         switch (menuCadastroSocio) {
             case 0: // Cadastrar Sócio
                 cadastroSocio();
@@ -124,7 +126,7 @@ public class Main {
     }
 
     private static void excluirSocio() {
-        Socio socio = null;
+        Socio socio ;
         socio = selecaoDeSocio();
         if (socio != null) {
             getSocioDAO().remover(socio);
@@ -180,7 +182,7 @@ public class Main {
     }
 
     public static void excluirInfra() {
-        Local local = null;
+        Local local;
         local = selecaoDeLocal();
         if (local != null) {
             getLocalDAO().remover(local);
@@ -282,7 +284,29 @@ public class Main {
         }
     }
 
-    private static void cadastroAluguel() {
+    private static Aluguel cadastroAluguel() {
+
+        Socio socio = selecaoDeSocio();
+        Local local = selecaoDeLocal();
+
+        String descricaoAluguel = JOptionPane.showInputDialog("Digite a descrição do aluguel:");
+        String dataHoraInicio = JOptionPane.showInputDialog("Digite a data e hora de início no formato yyyy-MM-dd HH:mm:");
+        String dataHoraFim = JOptionPane.showInputDialog("Digite a data e hora de término no formato yyyy-MM-dd HH:mm:");
+        String quantidadeVisitantesStr = JOptionPane.showInputDialog("Digite a quantidade de visitantes:");
+        LocalDateTime inicio = LocalDateTime.parse(dataHoraInicio);
+        LocalDateTime fim = LocalDateTime.parse(dataHoraFim);
+        int quantidadeVisitantes = Integer.parseInt(quantidadeVisitantesStr);
+        List<String> visitantes = new ArrayList<>();
+        for (int i = 1; i <= quantidadeVisitantes; i++) {
+            String nomeVisitante = JOptionPane.showInputDialog("Digite o nome do visitante " + i + ":");
+            visitantes.add(nomeVisitante);
+        }
+        Aluguel aluguel = new Aluguel(socio, local, descricaoAluguel, inicio, fim, visitantes);
+
+
+        JOptionPane.showMessageDialog(null, "Cadastro de Aluguel realizado com sucesso:\n" + aluguel.toString());
+
+        return aluguel;
     }
 
     public static void listarAlugueis() {
