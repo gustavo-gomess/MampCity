@@ -6,7 +6,7 @@ public abstract class Pessoa extends Entity{
     private String cpf;
     private Integer telefone;
     private String email;
-    private String status;
+
 
     public String getNomeCompleto() {
         return nomeCompleto;
@@ -40,14 +40,6 @@ public abstract class Pessoa extends Entity{
         this.email = email;
     }
 
-    public String getStatus() {
-        return status;
-    }
-
-    public void setStatus(String status) {
-        this.status = status;
-    }
-
     @Override
     public String toString() {
         return "Pessoa{" +
@@ -55,7 +47,6 @@ public abstract class Pessoa extends Entity{
                 ", cpf='" + cpf + '\'' +
                 ", telefone=" + telefone +
                 ", email='" + email + '\'' +
-                ", status='" + status + '\'' +
                 '}';
     }
 }

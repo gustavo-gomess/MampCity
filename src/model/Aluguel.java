@@ -5,19 +5,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Aluguel extends Entity{
+
     private Socio socio;
     private Local local;
     private String descricaoAluguel;
     private LocalDateTime dataHoraInicio;
     private LocalDateTime dataHoraFim;
     private List<String> visitantes;
-
-    public Aluguel(String descricaoAluguel, LocalDateTime dataHoraInicio, LocalDateTime dataHoraFim, List<String> visitantes) {
-        this.descricaoAluguel = descricaoAluguel;
-        this.dataHoraInicio = dataHoraInicio;
-        this.dataHoraFim = dataHoraFim;
-        this.visitantes = visitantes;
-    }
 
     public Aluguel(Socio socio, Local local, String descricaoAluguel, LocalDateTime inicio, LocalDateTime fim, List<String> visitantes) {
         super();
