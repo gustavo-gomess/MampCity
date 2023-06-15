@@ -5,22 +5,35 @@ import java.time.LocalDate;
 
 public class Inventario extends Entity{
 
-    private Item item;
+    private String Item;
+    private String descricao;
     private Integer quantidade;
-    private BigDecimal valor;
 
-    public Inventario(Item item, Integer quantidade, BigDecimal valor) {
-        this.item = item;
+    public Inventario(String item, String descricao, Integer quantidade) {
+        Item = item;
+        this.descricao = descricao;
         this.quantidade = quantidade;
-        this.valor = valor;
     }
 
-    public Item getItem() {
-        return item;
+    public Inventario(String item, Integer quantidade) {
+        Item = item;
+        this.quantidade = quantidade;
     }
 
-    public void setItem(Item item) {
-        this.item = item;
+    public String getItem() {
+        return Item;
+    }
+
+    public void setItem(String item) {
+        Item = item;
+    }
+
+    public String getDescricao() {
+        return descricao;
+    }
+
+    public void setDescricao(String descricao) {
+        this.descricao = descricao;
     }
 
     public Integer getQuantidade() {
@@ -31,18 +44,12 @@ public class Inventario extends Entity{
         this.quantidade = quantidade;
     }
 
-    public BigDecimal getValor() {
-        return valor;
-    }
-    public void setValor(BigDecimal valor) {
-        this.valor = valor;
-    }
-
     @Override
     public String toString() {
         return "Inventario{" +
+                "Item='" + Item + '\'' +
+                ", descricao='" + descricao + '\'' +
                 ", quantidade=" + quantidade +
-                ", valor=" + valor +
                 '}';
     }
 }
