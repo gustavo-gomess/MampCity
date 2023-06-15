@@ -1,6 +1,5 @@
-import Relatorio.TableSocio;
-import model.Pessoa;
-import model.Socio;
+import Relatorio.TableLocal;
+import model.Local;
 
 import javax.swing.*;
 import javax.swing.table.TableColumn;
@@ -10,30 +9,30 @@ import java.awt.event.WindowEvent;
 import java.util.List;
 import java.util.Vector;
 
-public class RelatorioSocioForm extends JPanel {
+public class RelatorioLocalForm extends JPanel {
 
     private static final long serialVersionUID = 1L;
 
     public static final String[] nomeColunas =
-            {"Nome", "Email","CPF", "Telefone","Carterinha","Status","Tipo", ""};
+            {"Nome", "Descrição", ""};
 
     protected JTable table;
     protected JScrollPane scroller;
-    protected TableSocio tabela;
+    protected TableLocal tabela;
 
-    public RelatorioSocioForm(Vector<Socio> vetorDados) {
+    public RelatorioLocalForm(Vector<Local> vetorDados) {
         iniciarComponentes(vetorDados);
     }
 
-    public void iniciarComponentes(Vector<Socio> vetorDados) {
-        tabela = new TableSocio(nomeColunas, vetorDados);
+    public void iniciarComponentes(Vector<Local> vetorDados) {
+        tabela = new TableLocal(nomeColunas, vetorDados);
         table = new JTable();
         table.setModel(tabela);
         table.setSurrendersFocusOnKeystroke(true);
         scroller = new javax.swing.JScrollPane(table);
         table.setPreferredScrollableViewportSize(new java.awt.Dimension(500, 300));
 
-        TableColumn colunaEscondida = table.getColumnModel().getColumn(TableSocio.INDEX_ESCONDIDO);
+        TableColumn colunaEscondida = table.getColumnModel().getColumn(TableLocal.INDEX_ESCONDIDO);
         colunaEscondida.setMinWidth(2);
         colunaEscondida.setPreferredWidth(2);
         colunaEscondida.setMaxWidth(2);
@@ -42,7 +41,7 @@ public class RelatorioSocioForm extends JPanel {
 
     }
 
-    public static void emitirRelatorio(List<Socio> socios) {
+    public static void emitirRelatorio(List<Local> local) {
         try {
             UIManager.setLookAndFeel(UIManager.getCrossPlatformLookAndFeelClassName());
             JFrame frame = new JFrame("Relatorio");
@@ -54,12 +53,12 @@ public class RelatorioSocioForm extends JPanel {
                 }
             });
 
-            Vector<Socio> vetorDados = new Vector<Socio>();
-            for (Socio socio : socios) {
-                vetorDados.add(socio);
+            Vector<Local> vetorDados = new Vector<Local>();
+            for (Local local1 : local) {
+                vetorDados.add(local1);
             }
 
-            frame.getContentPane().add(new RelatorioSocioForm(vetorDados));
+            frame.getContentPane().add(new RelatorioLocalForm(vetorDados));
             frame.pack();
             frame.setVisible(true);
             frame.setLocationRelativeTo(null);
@@ -68,3 +67,4 @@ public class RelatorioSocioForm extends JPanel {
         }
     }
 }
+
