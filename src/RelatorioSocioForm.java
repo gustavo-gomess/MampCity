@@ -50,7 +50,7 @@ public class RelatorioSocioForm extends JPanel {
             frame.addWindowListener(new WindowAdapter() {
                 public void windowClosing(WindowEvent evt) {
                     frame.setVisible(false);
-                    Main.chamaMenuRelatorios();
+                    //Main.chamaMenuRelatorios();
                 }
             });
 

@@ -39,8 +39,11 @@ public class InventarioDAO implements IGenericDao<Inventario> {
 
     @Override
     public List<Inventario> buscarPorNome(String nome) {
-        // por ora ficará assim
-        // podemos tentar colocar uma busca por ITEM
+        List<Inventario> itensFiltrados = new ArrayList<>();
+        for (Inventario itens : listaInventario) {
+
+        }
+
         return null;
     }
 }
