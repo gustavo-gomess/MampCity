@@ -21,6 +21,10 @@ public class Socio extends Pessoa{
         this.setEmail(email);
     }
 
+    public Socio() {
+
+    }
+
     public Integer getCarterinha() {
         return carterinha;
     }

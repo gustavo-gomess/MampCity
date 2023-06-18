@@ -10,8 +10,27 @@ public class LocalDAO implements IGenericDao<Local>{
 
     static List<Local> novoLocal = new ArrayList<>();
 
-    public static List<Local> buscaTodosLocais() {
-        return novoLocal;
+
+    public void init(){
+        if (novoLocal.isEmpty()){
+            Local local1 = new Local();;
+            local1.setNome("SALÃO 1");
+            local1.setDescricacaoLocal("COM 200 CADEIRAS");
+
+
+            Local local2 = new Local();
+            local2.setNome("SALÃO 2");
+            local2.setDescricacaoLocal("COM 500 CADEIRAS");
+
+            Local local3 = new Local();
+            local3.setNome("SALÃO 1");
+            local3.setDescricacaoLocal("COM 1000 CADEIRAS");
+
+            novoLocal.add(local1);
+            novoLocal.add(local2);
+            novoLocal.add(local3);
+
+        }
     }
 
     @Override
@@ -26,6 +45,7 @@ public class LocalDAO implements IGenericDao<Local>{
 
     @Override
     public List<Local> buscarTodos() {
+        init();
         System.out.println(novoLocal);
         return novoLocal;
     }

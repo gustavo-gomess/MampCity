@@ -4,16 +4,16 @@ import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Aluguel extends Entity{
-
+public class Aluguel extends Entity {
     private Socio socio;
     private Local local;
     private String descricaoAluguel;
     private LocalDateTime dataHoraInicio;
     private LocalDateTime dataHoraFim;
-    private List<String> visitantes;
+    private String numeroVisitantes;
 
-    public Aluguel(Socio socio, Local local, String descricaoAluguel, LocalDateTime inicio, LocalDateTime fim, List<String> visitantes) {
+
+    public Aluguel(Socio socio, Local local, String descricaoAluguel, LocalDateTime inicio, LocalDateTime fim, String numeroVisitantes) {
         super();
     }
 
@@ -37,8 +37,12 @@ public class Aluguel extends Entity{
         return dataHoraFim;
     }
 
-    public List<String> getVisitantes() {
-        return visitantes;
+    public String getNumeroVisitantes() {
+        return numeroVisitantes;
+    }
+
+    public void setNumeroVisitantes(String numeroVisitantes) {
+        this.numeroVisitantes = numeroVisitantes;
     }
 
     public void setDataHoraInicio(LocalDateTime dataHoraInicio) {
@@ -49,19 +53,6 @@ public class Aluguel extends Entity{
         this.dataHoraFim = dataHoraFim;
     }
 
-    public void setVisitantes(List<String> visitantes) {
-        this.visitantes = visitantes;
-    }
 
-    @Override
-    public String toString() {
-        return "Aluguel{" +
-                "socio=" + socio +
-                ", local=" + local +
-                ", descricaoAluguel='" + descricaoAluguel + '\'' +
-                ", dataHoraInicio=" + dataHoraInicio +
-                ", dataHoraFim=" + dataHoraFim +
-                ", visitantes=" + visitantes +
-                '}';
-    }
+
 }
