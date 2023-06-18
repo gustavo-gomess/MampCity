@@ -1,6 +1,8 @@
 package repository;
 
 import model.Inventario;
+import model.Socio;
+
 import java.util.List;
 import java.util.ArrayList;
 
@@ -41,9 +43,20 @@ public class InventarioDAO implements IGenericDao<Inventario> {
     public List<Inventario> buscarPorNome(String nome) {
         List<Inventario> itensFiltrados = new ArrayList<>();
         for (Inventario itens : listaInventario) {
+            if (itens.getItem().contains(nome)) {
+                itensFiltrados.add(itens);
+            }
+        }
+        return itensFiltrados;
+    }
+    public Object[] findInvetarioInArray() {
+        List<Inventario> inventario = buscarTodos();
+        List<String> inventarioNomes = new ArrayList<>();
 
+        for (Inventario inventario1 : inventario) {
+            inventarioNomes.add(inventario1.getItem());
         }
 
-        return null;
+        return inventarioNomes.toArray();
     }
 }
