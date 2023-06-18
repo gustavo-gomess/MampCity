@@ -50,13 +50,14 @@ public class Main {
         String[] opcoesMenuSocio = {"Cadastrar Socio", "Alterar Cadastro", "Exluir Socio", "Voltar"};
         int menuCadastroSocio = JOptionPane.showOptionDialog(null, "Escolha uma opção:", "Cadastrar",
                 JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE, null, opcoesMenuSocio, opcoesMenuSocio[0]);
-        Socio socio = null;
+        Socio socio;
         switch (menuCadastroSocio) {
             case 0: // Cadastrar Sócio
                 cadastroSocio();
                 break;
             case 1: // Altera Sócio
-                alteraSocio();
+                socio = selecaoDeSocio();
+                alteraSocio(socio);
                 break;
             case 2:// Excluir Socio
                 excluirSocio();
@@ -67,39 +68,34 @@ public class Main {
         chamaMenuPrincipal();
     }
 
-    private static void cadastroSocio() {
+    private static Socio cadastroSocio() {
         try {
-            LocalDate dataPlanejamento = LocalDate.now();
-            String inputData = JOptionPane.showInputDialog(null, "Digite uma data (formato: dd/MM/yyyy):",
-                    "Cadastrar socio", JOptionPane.DEFAULT_OPTION);
-            try {
-                dataPlanejamento = LocalDate.parse(inputData, java.time.format.DateTimeFormatter.ofPattern("dd/MM/yyyy"));
-            } catch (DateTimeParseException e) {
-                JOptionPane.showMessageDialog(null, "Formato inválido!",
-                        "Cadastrar Planejamento", JOptionPane.ERROR_MESSAGE);
-                chamaMenuSocio();
-            }
             String nome = JOptionPane.showInputDialog(null, "Digite o nome do sócio");
             String cpf = JOptionPane.showInputDialog(null, "Digite o CPF do sócio");
             String email = JOptionPane.showInputDialog(null, "Digite o email do sócio");
             Integer telefone = Integer.parseInt(JOptionPane.showInputDialog(null, "Digite o telefone do sócio"));
             Integer carteirinha = Integer.parseInt(JOptionPane.showInputDialog(null, "Digite o número da carteirinha do sócio"));
+
             Object[] selecionaTipoSocio = { TipoSocio.PRINCIPAL, TipoSocio.DEPENDENTE };
             int tipoSocioIndex = JOptionPane.showOptionDialog(null, "Selecione o tipo de sócio", "Tipo de Sócio",
                     JOptionPane.DEFAULT_OPTION, JOptionPane.PLAIN_MESSAGE, null, selecionaTipoSocio, selecionaTipoSocio[0]);
+
             Object[] selecionaStatusSocio = { StatusSocio.ATIVO, StatusSocio.INATIVO };
             int statusSocioIndex = JOptionPane.showOptionDialog(null, "Selecione o status de sócio", "Status de Sócio",
                     JOptionPane.DEFAULT_OPTION, JOptionPane.PLAIN_MESSAGE, null, selecionaStatusSocio, selecionaStatusSocio[0]);
-            SocioDAO socioDAO = new SocioDAO();
+
+
             Socio socio = new Socio(carteirinha, (StatusSocio) selecionaStatusSocio[statusSocioIndex],
                     (TipoSocio) selecionaTipoSocio[tipoSocioIndex], nome, cpf, email, telefone);
                 JOptionPane.showMessageDialog(null, "CADASTRO EFETUADO COM SUCESSO");
-            socioDAO.salvar(socio);
+
+            getSocioDAO().salvar(socio);
 
         } catch (Exception e) {
             chamaMenuSocio();
         }
         chamaMenuSocio();
+        return null;
     }
 
     private static Socio selecaoDeSocio() {
@@ -117,9 +113,23 @@ public class Main {
     }
 
 
-    private static void alteraSocio(){
+    private static void alteraSocio(Socio carterinhaatual){
+        String carterinha = JOptionPane.showInputDialog(null, "Digite o  nome do item: ", carterinhaatual.getCarterinha());
 
+        if (carterinha.equals(carterinha)) {
+            String alteraNome = JOptionPane.showInputDialog(null, "Digite o novo nome: ");
+            String alteraEmail = JOptionPane.showInputDialog(null, "Digite um novo email : ");
+            Integer alteraTelefone = Integer.valueOf(JOptionPane.showInputDialog(null, "Digite o novo telefone"));
+
+            carterinhaatual.setNomeCompleto(alteraNome);
+            carterinhaatual.setEmail(alteraEmail);
+            carterinhaatual.setTelefone(alteraTelefone);
+
+            getSocioDAO().salvar(carterinhaatual);
+        }
+        chamaMenuInventario();
     }
+
 
     private static void excluirSocio() {
         Socio socio = null;
@@ -135,13 +145,14 @@ public class Main {
         String[] opcoesLocal = {"Cadastrar nova Infraestrutura","Alterar Infraestrutura", "Excluir  Infraestrutura", "Voltar"};
         int menuCadastroLocal = JOptionPane.showOptionDialog(null, "Escolha uma opção:", "Cadastrar",
                 JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE, null, opcoesLocal, opcoesLocal[0]);
-
+        Local local;
         switch (menuCadastroLocal) {
             case 0: // Cadastra um novo local
                 cadastrarInfra();
                 break;
             case 1: // Altera um local cadastrado;
-                alteraInfra();
+                local = selecaoDeLocal();
+                alteraInfra(local);
                 break;
             case 2:// Excluir um local cadastrado
                 excluirInfra();
@@ -172,8 +183,20 @@ public class Main {
         return localDAO;
     }
 
-    public static void alteraInfra (){
+    public static void alteraInfra (Local local){
+        String localAltera = JOptionPane.showInputDialog(null, "Digite o  nome do item: ", local.getNome());
 
+        if (local.equals(localAltera)) {
+            String alteranome = JOptionPane.showInputDialog(null, "Digite o nome do local: ");
+            String alteraDescricao = JOptionPane.showInputDialog(null, "Digite uma descrição: ");
+
+            local.setNome(alteranome);
+            local.setDescricacaoLocal(alteraDescricao);
+
+
+            getLocalDAO().salvar(local);
+        }
+        chamaMenuInventario();
     }
 
     public static void excluirInfra() {
@@ -199,13 +222,14 @@ public class Main {
         String[] opcoesMenuInventario = {"Cadastrar Produto", "Alterar Itens", "Excluir Produto", "Voltar"};
         int menuCadastroInventario = JOptionPane.showOptionDialog(null, "Escolha uma opção:", "Cadastrar",
                 JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE, null, opcoesMenuInventario, opcoesMenuInventario[0]);
-
+        Inventario inventario;
         switch (menuCadastroInventario) {
             case 0: // Cadastrar novo produto no Inventário
                 cadastroInventario();
                 break;
             case 1:
-                alteraInventario();
+                inventario = selecaoDeInventario();
+                alteraInventario(inventario);
                 break;
             case 2: // Excluir um produto do Inventário
                 excluirInventario();
@@ -223,20 +247,29 @@ public class Main {
             String descricao = JOptionPane.showInputDialog(null, "Digite uma descrição: ");
             Integer quantidade = Integer.valueOf(JOptionPane.showInputDialog(null, "Digite a quantidade"));
 
-            InventarioDAO inventarioDAO = new InventarioDAO();
             Inventario inventario = new Inventario(item, descricao, quantidade);
-            inventarioDAO.salvar(inventario);
-            System.out.println(inventario);
+            getInventarioDAO().salvar(inventario);
 
         } catch (Exception e) {
             chamaMenuInventario();
         }
         chamaMenuInventario();
     }
+
+    private static Inventario selecaoDeInventario() {
+        Object[] selectionValues = getInventarioDAO().findInvetarioInArray();
+        String initialSelection = (String) selectionValues[0];
+        Object selection = JOptionPane.showInputDialog(null, "Selecione qual item!",
+                "MampAPP", JOptionPane.QUESTION_MESSAGE, null, selectionValues, initialSelection);
+        List<Inventario> inventarios = getInventarioDAO().buscarPorNome((String) selection);
+        return inventarios.get(0);
+    }
+
     public static InventarioDAO getInventarioDAO() {
         InventarioDAO inventarioDAO = new InventarioDAO();
         return inventarioDAO;
     }
+
     public static void alteraInventario(Inventario produto) {
         String item = JOptionPane.showInputDialog(null, "Digite o  nome do item: ", produto.getItem());
 
@@ -245,23 +278,23 @@ public class Main {
             String alteraDescricao = JOptionPane.showInputDialog(null, "Digite uma descrição: ");
             Integer alteraQuantidade = Integer.valueOf(JOptionPane.showInputDialog(null, "Digite a quantidade"));
 
-            Inventario inventario = new Inventario();
-            // falta finallizar essa parte, pois não salva
-
             produto.setItem(alteraProduto);
             produto.setDescricao(alteraDescricao);
             produto.setQuantidade(alteraQuantidade);
 
-
-            // talvez crie um new
-
             getInventarioDAO().salvar(produto);
-
         }
-
+        chamaMenuInventario();
     }
 
     public static void excluirInventario() {
+        Inventario inventario = null;
+        inventario = selecaoDeInventario();
+        if (inventario != null) {
+            getInventarioDAO().remover(inventario);
+        } else {
+            chamaMenuInventario();
+        }
     }
 
 

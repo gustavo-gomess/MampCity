@@ -5,27 +5,21 @@ import java.time.LocalDate;
 
 public class Inventario extends Entity{
 
-    private String Item;
+    private String item;
     private String descricao;
     private Integer quantidade;
 
     public Inventario(String item, String descricao, Integer quantidade) {
-        Item = item;
+        this.item = item;
         this.descricao = descricao;
         this.quantidade = quantidade;
     }
-
-    public Inventario(String item, Integer quantidade) {
-        Item = item;
-        this.quantidade = quantidade;
-    }
-
     public String getItem() {
-        return Item;
+        return item;
     }
 
     public void setItem(String item) {
-        Item = item;
+        this.item = item;
     }
 
     public String getDescricao() {
@@ -44,12 +38,4 @@ public class Inventario extends Entity{
         this.quantidade = quantidade;
     }
 
-    @Override
-    public String toString() {
-        return "Inventario{" +
-                "Item='" + Item + '\'' +
-                ", descricao='" + descricao + '\'' +
-                ", quantidade=" + quantidade +
-                '}';
-    }
 }
