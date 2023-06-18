@@ -9,6 +9,9 @@ public class Local extends Entity {
         this.descricacaoLocal = descricacaoLocal;
     }
 
+    public Local() {
+    }
+
     public String getNome() {
         return nome;
     }

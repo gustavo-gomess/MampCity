@@ -6,7 +6,7 @@ import javax.swing.table.AbstractTableModel;
 import java.util.Vector;
 public class TableInventario extends AbstractTableModel{
 
-    private static final long serialVersionID = 1L;
+    private static final long serialVersionUID = 1L;
 
     public static final int INDEX_ITEM = 0;
     public static final int INDEX_DESCRICAO = 1;
