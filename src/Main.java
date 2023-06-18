@@ -356,13 +356,22 @@ public class Main {
 
     public static void chamaRelatorioInventario(){
 
+        List<Inventario> inventarios = getInventarioDAO().buscarTodos();
+        RelatorioInventarioForm.emitirRelatorio(inventarios);
     }
 
+
     public static void chamaRelatorioLocais(){
+
+        List<Local> locals = getLocalDAO().buscarTodos();
+        RelatorioLocalForm.emitirRelatorio(locals);
 
     }
 
     public static void chamaRelatorioSocios(){
+
+        List<Socio> socios = getSocioDAO().buscarTodos();
+        RelatorioSocioForm.emitirRelatorio(socios);
 
     }
 
