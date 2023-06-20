@@ -13,8 +13,13 @@ public class Aluguel extends Entity {
     private String numeroVisitantes;
 
 
-    public Aluguel(Socio socio, Local local, String descricaoAluguel, LocalDateTime inicio, LocalDateTime fim, String numeroVisitantes) {
-        super();
+    public Aluguel(Socio socio, Local local, String descricaoAluguel, LocalDateTime dataHoraInicio, LocalDateTime dataHoraFim, String numeroVisitantes) {
+        this.socio = socio;
+        this.local = local;
+        this.descricaoAluguel = descricaoAluguel;
+        this.dataHoraInicio = dataHoraInicio;
+        this.dataHoraFim = dataHoraFim;
+        this.numeroVisitantes = numeroVisitantes;
     }
 
     public Socio getSocio() {
@@ -52,7 +57,5 @@ public class Aluguel extends Entity {
     public void setDataHoraFim(LocalDateTime dataHoraFim) {
         this.dataHoraFim = dataHoraFim;
     }
-
-
 
 }

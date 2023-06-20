@@ -1,7 +1,6 @@
 package model;
 
 public class Entity {
-
     private Long id;
 
     public Long getId() {

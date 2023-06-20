@@ -7,16 +7,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class LocalDAO implements IGenericDao<Local>{
-
     static List<Local> novoLocal = new ArrayList<>();
-
 
     public void init(){
         if (novoLocal.isEmpty()){
             Local local1 = new Local();;
             local1.setNome("SALÃO 1");
             local1.setDescricacaoLocal("COM 200 CADEIRAS");
-
 
             Local local2 = new Local();
             local2.setNome("SALÃO 2");
@@ -29,7 +26,6 @@ public class LocalDAO implements IGenericDao<Local>{
             novoLocal.add(local1);
             novoLocal.add(local2);
             novoLocal.add(local3);
-
         }
     }
 
@@ -40,7 +36,7 @@ public class LocalDAO implements IGenericDao<Local>{
 
     @Override
     public void remover(Local local) {
-            novoLocal.remove(local);
+        novoLocal.remove(local);
     }
 
     @Override
@@ -64,11 +60,9 @@ public class LocalDAO implements IGenericDao<Local>{
     public Object[] findLocalInArray() {
         List<Local>  locais = buscarTodos();
         List<String> localsNomes = new ArrayList<>();
-
         for (Local local : locais) {
             localsNomes.add(local.getNome());
         }
-
         return localsNomes.toArray();
     }
 }
