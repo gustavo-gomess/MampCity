@@ -65,4 +65,4 @@ public class RelatorioInventarioForm extends JPanel {
         }
     }
 
-}// fim classe
+}

@@ -10,11 +10,6 @@ import java.util.ArrayList;
 public class InventarioDAO implements IGenericDao<Inventario> {
     static List<Inventario> listaInventario = new ArrayList<>();
 
-    public static List<Inventario> buscaInventario () {
-        return listaInventario;
-    }
-
-
     @Override
     public void salvar(Inventario inventario) {
         if (inventario.getId() == null){
@@ -23,7 +18,6 @@ public class InventarioDAO implements IGenericDao<Inventario> {
             listaInventario.remove((int) (inventario.getId() - 1));
         }
         listaInventario.add(inventario);
-
     }
 
     @Override
@@ -52,11 +46,9 @@ public class InventarioDAO implements IGenericDao<Inventario> {
     public Object[] findInvetarioInArray() {
         List<Inventario> inventario = buscarTodos();
         List<String> inventarioNomes = new ArrayList<>();
-
         for (Inventario inventario1 : inventario) {
             inventarioNomes.add(inventario1.getItem());
         }
-
         return inventarioNomes.toArray();
     }
 }

@@ -51,7 +51,7 @@ public class SocioDAO implements IGenericDao<Socio> {
 
     @Override
     public List<Socio> buscarTodos() {
-        init ();
+        init();
         System.out.println(socios);
         return socios;
     }
@@ -69,11 +69,9 @@ public class SocioDAO implements IGenericDao<Socio> {
     public Object[] findSocioInArray() {
         List<Socio> socios = buscarTodos();
         List<String> sociosNomes = new ArrayList<>();
-
         for (Socio socio : socios) {
             sociosNomes.add(socio.getNomeCompleto());
         }
-
         return sociosNomes.toArray();
     }
 }

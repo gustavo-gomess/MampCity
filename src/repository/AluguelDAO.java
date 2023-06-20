@@ -9,11 +9,6 @@ public class AluguelDAO implements IGenericDao<Aluguel> {
 
     static List<Aluguel> novoAluguel = new ArrayList<>();
 
-
-    public static List<Aluguel> buscaTodosAlugueis() {
-        return novoAluguel;
-    }
-
     @Override
     public void salvar(Aluguel aluguel) {
         if (aluguel.getId() == null) {

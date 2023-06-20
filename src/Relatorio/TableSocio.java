@@ -7,7 +7,6 @@ import javax.swing.table.AbstractTableModel;
 import java.util.Vector;
 
 public class TableSocio extends AbstractTableModel {
-
     private static final long serialVersionUID = 1L;
 
     public static final int INDEX_NOME = 0;
@@ -17,7 +16,7 @@ public class TableSocio extends AbstractTableModel {
     public static final int INDEX_CARTERINHA = 4;
     public static final int INDEX_STATUS = 5;
     public static final int INDEX_TIPO = 6;
-    public static final int INDEX_ESCONDIDO = 6;
+    public static final int INDEX_ESCONDIDO = 7;
     protected String[] nomeColunas;
     protected Vector<Socio> vetorDados;
 

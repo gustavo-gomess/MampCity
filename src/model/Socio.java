@@ -11,14 +11,8 @@ public class Socio extends Pessoa{
         this.setCpf(cpf);
         this.setTelefone(telefone);
         this.carterinha = carterinha;
-        this.statusSocio = statusSocio;
+        this.statusSocio = statusSocio;// ALTERAR
         this.enumTipoSocio = enumTipoSocio;
-    }
-
-    public Socio(String nome,  Integer telefone,String email) {
-        this.setNomeCompleto(nome);
-        this.setTelefone(telefone);
-        this.setEmail(email);
     }
 
     public Socio() {
