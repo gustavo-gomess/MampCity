@@ -251,19 +251,18 @@ public class Main {
 
 
 
-    public static void alteraInventario(Inventario produto) {
-        String item = JOptionPane.showInputDialog(null, "Digite o nome do item: ", produto.getItem());
+    public static void alteraInventario(Inventario produtoAtual) {
 
-        if (produto.equals(item)) {
+        if (produtoAtual.equals(produtoAtual)) {
             String alteraProduto = JOptionPane.showInputDialog(null, "Digite o nome do Item: ");
             String alteraDescricao = JOptionPane.showInputDialog(null, "Digite uma descrição: ");
             Integer alteraQuantidade = Integer.valueOf(JOptionPane.showInputDialog(null, "Digite a quantidade"));
 
-            produto.setItem(alteraProduto);
-            produto.setDescricao(alteraDescricao);
-            produto.setQuantidade(alteraQuantidade);
+            produtoAtual.setItem(alteraProduto);
+            produtoAtual.setDescricao(alteraDescricao);
+            produtoAtual.setQuantidade(alteraQuantidade);
 
-            getInventarioDAO().salvar(produto);
+            getInventarioDAO().salvar(produtoAtual);
         }
         chamaMenuInventario();
     }
