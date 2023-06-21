@@ -28,7 +28,6 @@ public class Local extends Entity {
         this.descricacaoLocal = descricacaoLocal;
     }
 
-
     @Override
     public String toString() {
         return "Local{" +

@@ -58,4 +58,15 @@ public class Aluguel extends Entity {
         this.dataHoraFim = dataHoraFim;
     }
 
+    @Override
+    public String toString() {
+        return "Aluguel{" +
+                "socio=" + socio.getNomeCompleto() +
+                ", local=" + local.getNome() +
+                ", descricaoAluguel='" + descricaoAluguel + '\'' +
+                ", dataHoraInicio=" + dataHoraInicio +
+                ", dataHoraFim=" + dataHoraFim +
+                ", numeroVisitantes='" + numeroVisitantes + '\'' +
+                '}';
+    }
 }

@@ -98,7 +98,7 @@ public class Main {
     private static Socio selecaoDeSocio() {
         Object[] selectionValues = getSocioDAO().findSocioInArray();
         String initialSelection = (String) selectionValues[0];
-        Object selection = JOptionPane.showInputDialog(null, "Selecione o socio?",
+        Object selection = JOptionPane.showInputDialog(null, "Selecione o sócio: ",
                 "MampAPP", JOptionPane.QUESTION_MESSAGE, null, selectionValues, initialSelection);
         List<Socio> socios = getSocioDAO().buscarPorNome((String) selection);
         return socios.get(0);
@@ -298,15 +298,15 @@ public class Main {
         Socio socio = selecaoDeSocio();
         Local local = selecaoDeLocal();
 
+
         String descricaoAluguel = JOptionPane.showInputDialog("Digite a descrição do aluguel:");
         String dataInicio = JOptionPane.showInputDialog("Digite a data de início no formato dd/MM/yyyy:");
         String dataFim = JOptionPane.showInputDialog("Digite a data de término no formato dd/MM/yyyy:");
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
         LocalDate inicio = LocalDate.parse(dataInicio, formatter);
         LocalDate fim = LocalDate.parse(dataFim, formatter);
-        LocalDateTime dataHoraInicio = inicio.atStartOfDay();
-        LocalDateTime dataHoraFim = fim.atStartOfDay();
-
+        LocalDateTime dataHoraInicio = inicio.atTime(18, 00,00);
+        LocalDateTime dataHoraFim = fim.atTime(23, 00, 00);
         String numeroVisitantes = JOptionPane.showInputDialog("Digite a quantidade de visitantes:");
 
         Aluguel aluguel = new Aluguel(socio, local, descricaoAluguel, dataHoraInicio, dataHoraFim, numeroVisitantes);
@@ -315,6 +315,7 @@ public class Main {
 
         getAluguelDAO().salvar(aluguel);
         return aluguel;
+
     }
 
 

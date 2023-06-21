@@ -43,9 +43,9 @@ public class TableAluguel extends AbstractTableModel  {
         Aluguel registroAluguel = vetorDados.get(linha);
         switch (coluna) {
             case INDEX_SOCIO:
-                return registroAluguel.getLocal();
+                return registroAluguel.getSocio().getNomeCompleto();
             case INDEX_LOCAL:
-                return registroAluguel.getSocio();
+                return registroAluguel.getLocal().getNome();
             case INDEX_DESCRICAOALUGUEL:
                 return registroAluguel.getDescricao();
             case INDEX_DATAHORAINICIO:
