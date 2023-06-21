@@ -11,6 +11,8 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
 
+import static java.lang.System.exit;
+
 
 public class Main {
     public static void main(String[] args) {
@@ -18,18 +20,18 @@ public class Main {
     }
 
     private static void chamaMenuPrincipal() {
-        String[] opcoesMenuPrincipal = {"Socio", "Infraestrutura", "Inventário", "Aluguel", "Relatório", "Sair"};
+        String[] opcoesMenuPrincipal = {"Sócio", "Infraestrutura", "Inventário", "Aluguel", "Relatório", "Sair"};
         int opcaoMenuPrincipal = JOptionPane.showOptionDialog(null, "Escolha uma opção:",
                 "Menu Principal",
                 JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE, null, opcoesMenuPrincipal, opcoesMenuPrincipal[0]);
         switch (opcaoMenuPrincipal) {
-            case 0: //Chama o menu do Socio
+            case 0: //Chama o menu do Sócio
                 chamaMenuSocio();
                 break;
             case 1: //Chama o menu de InfraEstrutura
                 chamaMenuInfra();
                 break;
-            case 2: //Chama o menu do Inventario
+            case 2: //Chama o menu do Inventário
                 chamaMenuInventario();
                 break;
             case 3://Chama o menu dos Alugueis
@@ -39,14 +41,14 @@ public class Main {
                 chamaMenuRelatorios();
                 break;
             case 5:
-
+                exit(0);
                 break;
         }
     }
 
 
     private static void chamaMenuSocio() {
-        String[] opcoesMenuSocio = {"Cadastrar Socio", "Alterar Cadastro", "Exluir Socio", "Voltar"};
+        String[] opcoesMenuSocio = {"Cadastrar Sócio", "Alterar Cadastro", "Exluir Sócio", "Voltar"};
         int menuCadastroSocio = JOptionPane.showOptionDialog(null, "Escolha uma opção:", "Cadastrar",
                 JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE, null, opcoesMenuSocio, opcoesMenuSocio[0]);
         Socio socio;
@@ -58,7 +60,7 @@ public class Main {
                 socio = selecaoDeSocio();
                 alteraSocio(socio);
                 break;
-            case 2:// Excluir Socio
+            case 2:// Excluir Sócio
                 excluirSocio();
                 break;
             case 3:
@@ -74,15 +76,12 @@ public class Main {
             String email = JOptionPane.showInputDialog(null, "Digite o email do sócio");
             Integer telefone = Integer.parseInt(JOptionPane.showInputDialog(null, "Digite o telefone do sócio"));
             Integer carteirinha = Integer.parseInt(JOptionPane.showInputDialog(null, "Digite o número da carteirinha do sócio"));
-
             Object[] selecionaTipoSocio = { TipoSocio.PRINCIPAL, TipoSocio.DEPENDENTE };
             int tipoSocioIndex = JOptionPane.showOptionDialog(null, "Selecione o tipo de sócio", "Tipo de Sócio",
                     JOptionPane.DEFAULT_OPTION, JOptionPane.PLAIN_MESSAGE, null, selecionaTipoSocio, selecionaTipoSocio[0]);
-
             Object[] selecionaStatusSocio = { StatusSocio.ATIVO, StatusSocio.INATIVO };
             int statusSocioIndex = JOptionPane.showOptionDialog(null, "Selecione o status de sócio", "Status de Sócio",
                     JOptionPane.DEFAULT_OPTION, JOptionPane.PLAIN_MESSAGE, null, selecionaStatusSocio, selecionaStatusSocio[0]);
-
 
             Socio socio = new Socio(carteirinha, (StatusSocio) selecionaStatusSocio[statusSocioIndex],
                     (TipoSocio) selecionaTipoSocio[tipoSocioIndex], nome, cpf, email, telefone);

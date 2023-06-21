@@ -49,6 +49,7 @@ public class RelatorioInventarioForm extends JPanel {
                     frame.setVisible(false);
                     Main.chamaMenuRelatorios();
                 }
+
             });
 
             Vector<Inventario> vetorDados = new Vector<>();

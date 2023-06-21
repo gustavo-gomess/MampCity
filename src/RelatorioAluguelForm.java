@@ -14,7 +14,7 @@ public class RelatorioAluguelForm extends JPanel {
     private static final long serialVersionUID = 1L;
 
     public static final String[] nomeColunas =
-            {"Sócio", "Local","Descrição Aluguel", "Data Hora Início", "Data Hora Fim", "Número de Visitantes", ""};
+            {"Sócio", "Local","Descrição Aluguel", "Dia ínicio", "Dia fim", "Número de Visitantes", ""};
 
     protected JTable table;
     protected JScrollPane scroller;
@@ -51,6 +51,7 @@ public class RelatorioAluguelForm extends JPanel {
                     frame.setVisible(false);
                     Main.chamaMenuRelatorios();
                 }
+
             });
 
             Vector<Aluguel> vetorDados = new Vector<>();
