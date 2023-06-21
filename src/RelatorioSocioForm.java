@@ -52,8 +52,8 @@ public class RelatorioSocioForm extends JPanel {
                     frame.setVisible(false);
                     Main.chamaMenuRelatorios();
                 }
-            });
 
+            });
             Vector<Socio> vetorDados = new Vector<Socio>();
             for (Socio socio : socios) {
                 vetorDados.add(socio);

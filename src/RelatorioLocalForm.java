@@ -51,6 +51,7 @@ public class RelatorioLocalForm extends JPanel {
                     frame.setVisible(false);
                     Main.chamaMenuRelatorios();
                 }
+
             });
 
             Vector<Local> vetorDados = new Vector<Local>();
