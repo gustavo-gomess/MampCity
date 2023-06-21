@@ -38,4 +38,13 @@ public class Inventario extends Entity{
         this.quantidade = quantidade;
     }
 
+
+    @Override
+    public String toString() {
+        return "Inventario{" +
+                "item='" + item + '\'' +
+                ", descricao='" + descricao + '\'' +
+                ", quantidade=" + quantidade +
+                '}';
+    }
 }

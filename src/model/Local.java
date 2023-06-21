@@ -29,4 +29,11 @@ public class Local extends Entity {
     }
 
 
+    @Override
+    public String toString() {
+        return "Local{" +
+                "nome='" + nome + '\'' +
+                ", descricacaoLocal='" + descricacaoLocal + '\'' +
+                '}';
+    }
 }

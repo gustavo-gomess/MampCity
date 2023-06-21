@@ -96,7 +96,6 @@ public class Main {
         chamaMenuSocio();
         return null;
     }
-
     private static Socio selecaoDeSocio() {
         Object[] selectionValues = getSocioDAO().findSocioInArray();
         String initialSelection = (String) selectionValues[0];
@@ -105,8 +104,6 @@ public class Main {
         List<Socio> socios = getSocioDAO().buscarPorNome((String) selection);
         return socios.get(0);
     }
-
-
 
     private static void alteraSocio(Socio carterinhaatual){
         String carterinha = JOptionPane.showInputDialog(null, "Digite o  nome do item: ", carterinhaatual.getCarterinha());
@@ -124,7 +121,6 @@ public class Main {
         }
         chamaMenuSocio();
     }
-
 
     private static void excluirSocio() {
         Socio socio = null;
@@ -163,10 +159,8 @@ public class Main {
             String nome = JOptionPane.showInputDialog(null, "Digite o nome da nova Infraestrutura!");
             String descricao = JOptionPane.showInputDialog(null, "Digite a descrição da Infraestrutura!");
 
-
             Local local = new Local (nome,descricao);
             getLocalDAO().salvar(local);
-
 
         } catch (Exception e) {
             chamaMenuInfra();
@@ -175,7 +169,7 @@ public class Main {
     }
 
     public static void alteraInfra (Local local){
-        String localAltera = JOptionPane.showInputDialog(null, "Digite o  nome do item: ", local.getNome());
+        String localAltera = JOptionPane.showInputDialog(null, "Digite o nome do item: ", local.getNome());
 
         if (local.equals(localAltera)) {
             String alteranome = JOptionPane.showInputDialog(null, "Digite o nome do local: ");
@@ -259,7 +253,7 @@ public class Main {
 
 
     public static void alteraInventario(Inventario produto) {
-        String item = JOptionPane.showInputDialog(null, "Digite o  nome do item: ", produto.getItem());
+        String item = JOptionPane.showInputDialog(null, "Digite o nome do item: ", produto.getItem());
 
         if (produto.equals(item)) {
             String alteraProduto = JOptionPane.showInputDialog(null, "Digite o nome do Item: ");
@@ -293,7 +287,7 @@ public class Main {
                 JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE, null, opcoesMenuAluguel, opcoesMenuAluguel[0]);
 
         switch (menuCadastroAluguel) {
-            case 0: // Cadastrar novo produto no Inventário
+            case 0: // Cadastra novo Aluguel
                 cadastroAluguel();
                 break;
             case 1:// Voltar
