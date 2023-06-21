@@ -44,6 +44,7 @@ public class Main {
         }
     }
 
+
     private static void chamaMenuSocio() {
         String[] opcoesMenuSocio = {"Cadastrar Socio", "Alterar Cadastro", "Exluir Socio", "Voltar"};
         int menuCadastroSocio = JOptionPane.showOptionDialog(null, "Escolha uma opção:", "Cadastrar",
@@ -105,8 +106,10 @@ public class Main {
         return socios.get(0);
     }
 
+
+
     private static void alteraSocio(Socio carterinhaatual){
-        String carterinha = JOptionPane.showInputDialog(null, "Digite o  numero da carterinha: ", carterinhaatual.getCarterinha());
+        String carterinha = JOptionPane.showInputDialog(null, "Digite o  nome do item: ", carterinhaatual.getCarterinha());
 
         if (carterinha.equals(carterinha)) {
             String alteraNome = JOptionPane.showInputDialog(null, "Digite o novo nome: ");
@@ -121,6 +124,7 @@ public class Main {
         }
         chamaMenuSocio();
     }
+
 
     private static void excluirSocio() {
         Socio socio = null;
@@ -159,8 +163,10 @@ public class Main {
             String nome = JOptionPane.showInputDialog(null, "Digite o nome da nova Infraestrutura!");
             String descricao = JOptionPane.showInputDialog(null, "Digite a descrição da Infraestrutura!");
 
+
             Local local = new Local (nome,descricao);
             getLocalDAO().salvar(local);
+
 
         } catch (Exception e) {
             chamaMenuInfra();
@@ -169,7 +175,7 @@ public class Main {
     }
 
     public static void alteraInfra (Local local){
-        String localAltera = JOptionPane.showInputDialog(null, "Digite o nome do item: ", local.getNome());
+        String localAltera = JOptionPane.showInputDialog(null, "Digite o  nome do item: ", local.getNome());
 
         if (local.equals(localAltera)) {
             String alteranome = JOptionPane.showInputDialog(null, "Digite o nome do local: ");
@@ -177,6 +183,7 @@ public class Main {
 
             local.setNome(alteranome);
             local.setDescricacaoLocal(alteraDescricao);
+
 
             getLocalDAO().salvar(local);
         }
@@ -249,8 +256,10 @@ public class Main {
         return inventarios.get(0);
     }
 
+
+
     public static void alteraInventario(Inventario produto) {
-        String item = JOptionPane.showInputDialog(null, "Digite o nome do item: ", produto.getItem());
+        String item = JOptionPane.showInputDialog(null, "Digite o  nome do item: ", produto.getItem());
 
         if (produto.equals(item)) {
             String alteraProduto = JOptionPane.showInputDialog(null, "Digite o nome do Item: ");
@@ -274,11 +283,11 @@ public class Main {
         } else {
             chamaMenuInventario();
         }
-        chamaMenuInventario();
     }
 
 
     public static void chamaMenuAluguel() {
+
         String[] opcoesMenuAluguel = {"Cadastrar Aluguel", "Voltar"};
         int menuCadastroAluguel = JOptionPane.showOptionDialog(null, "Escolha uma opção:", "Cadastrar",
                 JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE, null, opcoesMenuAluguel, opcoesMenuAluguel[0]);
@@ -315,6 +324,36 @@ public class Main {
         getAluguelDAO().salvar(aluguel);
         return aluguel;
     }
+
+
+    public static void chamaRelatorioInventario(){
+
+        List<Inventario> inventarios = getInventarioDAO().buscarTodos();
+        RelatorioInventarioForm.emitirRelatorio(inventarios);
+    }
+
+
+    public static void chamaRelatorioLocais(){
+
+        List<Local> locals = getLocalDAO().buscarTodos();
+        RelatorioLocalForm.emitirRelatorio(locals);
+
+    }
+
+    public static void chamaRelatorioSocios(){
+
+        List<Socio> socios = getSocioDAO().buscarTodos();
+        RelatorioSocioForm.emitirRelatorio(socios);
+
+    }
+
+    public static void chamaRelatorioAluguel(){
+
+        List<Aluguel> aluguel = getAluguelDAO().buscarTodos();
+        RelatorioAluguelForm.emitirRelatorio(aluguel);
+    }
+
+
     public static void chamaMenuRelatorios() {
 
         String[] opcoesMenuRelatorios = {"Relatório de Socios", "Relatório de Locais", "Relatório de Produtos", "Relatório de Alugueis", "Voltar"};
@@ -329,7 +368,7 @@ public class Main {
                 chamaRelatorioLocais();
                 break;
             case 2: // Relatório de produtos inventáriados
-                chamaRelatorioInventario();
+               chamaRelatorioInventario();
                 break;
             case 3: // Relatório de Alugueis
                 chamaRelatorioAluguel();
@@ -340,29 +379,6 @@ public class Main {
         }
 
     }
-
-    public static void chamaRelatorioInventario(){
-        List<Inventario> inventarios = getInventarioDAO().buscarTodos();
-        RelatorioInventarioForm.emitirRelatorio(inventarios);
-    }
-
-
-    public static void chamaRelatorioLocais(){
-        List<Local> locals = getLocalDAO().buscarTodos();
-        RelatorioLocalForm.emitirRelatorio(locals);
-    }
-
-    public static void chamaRelatorioSocios(){
-        List<Socio> socios = getSocioDAO().buscarTodos();
-        RelatorioSocioForm.emitirRelatorio(socios);
-    }
-
-    public static void chamaRelatorioAluguel(){
-        List<Aluguel> aluguel = getAluguelDAO().buscarTodos();
-        RelatorioAluguelForm.emitirRelatorio(aluguel);
-    }
-
-
 
     public static SocioDAO getSocioDAO() {
         SocioDAO socioDAO = new SocioDAO();

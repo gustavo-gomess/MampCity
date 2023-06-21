@@ -40,15 +40,7 @@ public abstract class Pessoa extends Entity{
         this.email = email;
     }
 
-    @Override
-    public String toString() {
-        return "Pessoa{" +
-                "nomeCompleto='" + nomeCompleto + '\'' +
-                ", cpf='" + cpf + '\'' +
-                ", telefone=" + telefone +
-                ", email='" + email + '\'' +
-                '}';
-    }
+
 }
 
 

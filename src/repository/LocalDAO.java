@@ -20,7 +20,7 @@ public class LocalDAO implements IGenericDao<Local>{
             local2.setDescricacaoLocal("COM 500 CADEIRAS");
 
             Local local3 = new Local();
-            local3.setNome("SALÃO 1");
+            local3.setNome("SALÃO 3");
             local3.setDescricacaoLocal("COM 1000 CADEIRAS");
 
             novoLocal.add(local1);
