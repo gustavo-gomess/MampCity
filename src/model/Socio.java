@@ -44,6 +44,7 @@ public class Socio extends Pessoa{
         this.enumTipoSocio = enumTipoSocio;
     }
 
+
     @Override
     public String toString() {
         return "Socio{" +
