@@ -1,4 +1,4 @@
-AlugueSports
+MampCity
 Os objetivos a serem alcançados com este projeto foram inicialmente estabelecidos durante o processo de definição e planejamento. 
 Esses objetivos têm como finalidade orientar e direcionar as atividades e ações a serem desenvolvidas no âmbito do projeto. 
 
@@ -6,24 +6,28 @@ São eles:
 
 Cadastro:
 
-° Cliente
+° Sócio
 ° Aluguel
 ° Inventario(Item)
-° Pessoa
-° Socio
+° Infraestrutura
 ° Status do Socio
 ° Tipo do Socio
 
 Processos:
 
-Cancelamento de alugueis
-inativação de Socio
-Exclusão de local
-Alteração de Socio
+Cadastro de Sócio
+Cadastro de Dependente
+Inativação de Sócio
+Alteração de Sócio
+Exclusão de Sócio/Dependente
+Cadastro de Infraestrutura
 Alteração de Local ou infraestrutura
-Alteração de quantidade de itens/inventario
+Exclusão de Infraestrutura
+Cadastro de material
+Exclusão de Material
+Alteração de Material
+Cadastro de Aluguel
 
-Consulta de disponibilidade de espaço
 
 Relatórios:
 

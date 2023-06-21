@@ -12,7 +12,7 @@ public class TableInventario extends AbstractTableModel{
     public static final int INDEX_DESCRICAO = 1;
     public static final int INDEX_QUANTIDADE = 2;
 
-    public static final int INDEX_ESCONDIDO = 2;
+    public static final int INDEX_ESCONDIDO = 3;
 
     protected String[] nomeColunas;
 
