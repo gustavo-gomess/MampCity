@@ -1,11 +1,9 @@
 import model.*;
-import repository.AluguelDAO;
-import repository.InventarioDAO;
-import repository.LocalDAO;
-import repository.SocioDAO;
+import repository.*;
 
 
 import javax.swing.*;
+import java.sql.SQLException;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
@@ -15,11 +13,13 @@ import static java.lang.System.exit;
 
 
 public class Main {
-    public static void main(String[] args) {
-        chamaMenuPrincipal();
+    public static void main(String[] args) throws SQLException, ClassNotFoundException {
+        Object usuarioLogado = chamaSelecaoUsuario();
+        checaSenhaUsuario(usuarioLogado);
     }
 
-    private static void chamaMenuPrincipal() {
+
+    public static void chamaMenuPrincipal() {
         String[] opcoesMenuPrincipal = {"Sócio", "Infraestrutura", "Inventário", "Aluguel", "Relatório", "Sair"};
         int opcaoMenuPrincipal = JOptionPane.showOptionDialog(null, "Escolha uma opção:",
                 "Menu Principal",
@@ -47,7 +47,7 @@ public class Main {
     }
 
 
-    private static void chamaMenuSocio() {
+    public static void chamaMenuSocio() {
         String[] opcoesMenuSocio = {"Cadastrar Sócio", "Alterar Cadastro", "Exluir Sócio", "Voltar"};
         int menuCadastroSocio = JOptionPane.showOptionDialog(null, "Escolha uma opção:", "Cadastrar",
                 JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE, null, opcoesMenuSocio, opcoesMenuSocio[0]);
@@ -69,7 +69,7 @@ public class Main {
         chamaMenuPrincipal();
     }
 
-    private static Socio cadastroSocio() {
+    public static Socio cadastroSocio() {
         try {
             String nome = JOptionPane.showInputDialog(null, "Digite o nome do sócio");
             String cpf = JOptionPane.showInputDialog(null, "Digite o CPF do sócio");
@@ -95,7 +95,7 @@ public class Main {
         chamaMenuSocio();
         return null;
     }
-    private static Socio selecaoDeSocio() {
+    public static Socio selecaoDeSocio() {
         Object[] selectionValues = getSocioDAO().findSocioInArray();
         String initialSelection = (String) selectionValues[0];
         Object selection = JOptionPane.showInputDialog(null, "Selecione o sócio: ",
@@ -104,7 +104,7 @@ public class Main {
         return socios.get(0);
     }
 
-    private static void alteraSocio(Socio carterinhaatual){
+    public static void alteraSocio(Socio carterinhaatual){
         String carterinha = JOptionPane.showInputDialog(null, "Digite o  nome do item: ", carterinhaatual.getCarterinha());
 
         if (carterinha.equals(carterinha)) {
@@ -121,7 +121,7 @@ public class Main {
         chamaMenuSocio();
     }
 
-    private static void excluirSocio() {
+    public static void excluirSocio() {
         Socio socio = null;
         socio = selecaoDeSocio();
         if (socio != null) {
@@ -131,7 +131,7 @@ public class Main {
         }
     }
 
-    private static void chamaMenuInfra() {
+    public static void chamaMenuInfra() {
         String[] opcoesLocal = {"Cadastrar nova Infraestrutura","Alterar Infraestrutura", "Excluir  Infraestrutura", "Voltar"};
         int menuCadastroLocal = JOptionPane.showOptionDialog(null, "Escolha uma opção:", "Cadastrar",
                 JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE, null, opcoesLocal, opcoesLocal[0]);
@@ -193,7 +193,7 @@ public class Main {
         }
     }
 
-    private static Local selecaoDeLocal() {
+    public static Local selecaoDeLocal() {
         Object[] selectionValues = getLocalDAO().findLocalInArray();
         String initialSelection = (String) selectionValues[0];
         Object selection = JOptionPane.showInputDialog(null, "Selecione qual local!",
@@ -225,7 +225,7 @@ public class Main {
 
     }
 
-    private static void cadastroInventario() {
+    public static void cadastroInventario() {
         try {
             String item = JOptionPane.showInputDialog(null, "Digite o nome do Item: ");
             String descricao = JOptionPane.showInputDialog(null, "Digite uma descrição: ");
@@ -240,7 +240,7 @@ public class Main {
         chamaMenuInventario();
     }
 
-    private static Inventario selecaoDeInventario() {
+    public static Inventario selecaoDeInventario() {
         Object[] selectionValues = getInventarioDAO().findInvetarioInArray();
         String initialSelection = (String) selectionValues[0];
         Object selection = JOptionPane.showInputDialog(null, "Selecione qual item!",
@@ -294,7 +294,7 @@ public class Main {
         }
     }
 
-    private static Aluguel cadastroAluguel() {
+    public static Aluguel cadastroAluguel() {
         Socio socio = selecaoDeSocio();
         Local local = selecaoDeLocal();
 
@@ -305,8 +305,8 @@ public class Main {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
         LocalDate inicio = LocalDate.parse(dataInicio, formatter);
         LocalDate fim = LocalDate.parse(dataFim, formatter);
-        LocalDateTime dataHoraInicio = inicio.atTime(18, 00,00);
-        LocalDateTime dataHoraFim = fim.atTime(23, 00, 00);
+        LocalDateTime dataHoraInicio = inicio.atTime(14, 00,00);
+        LocalDateTime dataHoraFim = fim.atTime(07, 00, 00);
         String numeroVisitantes = JOptionPane.showInputDialog("Digite a quantidade de visitantes:");
 
         Aluguel aluguel = new Aluguel(socio, local, descricaoAluguel, dataHoraInicio, dataHoraFim, numeroVisitantes);
@@ -371,6 +371,27 @@ public class Main {
                 break;
         }
 
+    }
+    public static void checaSenhaUsuario(Object usuarioLogado) throws SQLException, ClassNotFoundException {
+        String senhaDigitada = JOptionPane.showInputDialog(null,
+                "Informe a senha do usuario (" + usuarioLogado + ")");
+        Usuario usuarioByLogin = UsuarioDAO.findUsuarioByLogin((String) usuarioLogado);
+
+        if (usuarioByLogin.getSenha().equals(senhaDigitada)) {
+            chamaMenuPrincipal();
+        } else {
+            JOptionPane.showMessageDialog(null, "Senha incorreta!");
+            chamaSelecaoUsuario();
+        }
+    }
+
+
+    public static Object chamaSelecaoUsuario() {
+        Object[] selectionValues = UsuarioDAO.findUsuariosSistemaInArray();
+        String initialSelection = (String) selectionValues[0];
+        Object selection = JOptionPane.showInputDialog(null, "Selecione o usuario?",
+                "SeguradoraAPP", JOptionPane.QUESTION_MESSAGE, null, selectionValues, initialSelection);
+        return selection;
     }
 
     public static SocioDAO getSocioDAO() {

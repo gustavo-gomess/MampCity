@@ -8,30 +8,6 @@ import java.util.List;
 public class SocioDAO implements IGenericDao<Socio> {
     static List<Socio> socios = new ArrayList<>();
 
-    public void init (){
-            if (socios.isEmpty()){
-                Socio socio1 = new Socio();
-                socio1.setNomeCompleto("Luiz");
-                socio1.setCpf("212123132");
-                socio1.setCarterinha(1);
-
-                Socio socio2 = new Socio();
-                socio1.setNomeCompleto("Gustavo");
-                socio1.setCpf("3123123123213");
-                socio1.setCarterinha(2);
-
-                Socio socio3 = new Socio();
-                socio1.setNomeCompleto("Lucas");
-                socio1.setCpf("212123132");
-                socio1.setCarterinha(3);
-
-                socios.add(socio1);
-                socios.add(socio2);
-                socios.add(socio3);
-
-            }
-        }
-
     @Override
     public void salvar(Socio socio) {
         if (socio.getId() == null) {
@@ -51,7 +27,6 @@ public class SocioDAO implements IGenericDao<Socio> {
 
     @Override
     public List<Socio> buscarTodos() {
-        init();
         System.out.println(socios);
         return socios;
     }
