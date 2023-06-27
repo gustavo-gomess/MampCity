@@ -34,6 +34,10 @@ public class Aluguel extends Entity {
         return socio;
     }
 
+    public Inventario getInventario() {
+        return inventario;
+    }
+
     public Local getLocal() {
         return local;
     }

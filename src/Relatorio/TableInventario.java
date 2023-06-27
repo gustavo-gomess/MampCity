@@ -43,7 +43,7 @@ public class TableInventario extends AbstractTableModel{
             case INDEX_ITEM:
                 return registroInventario.getItem();
             case INDEX_DESCRICAO:
-                return registroInventario.getDescricao();
+                return registroInventario.getDescricaoInv();
             case INDEX_QUANTIDADE:
                 return registroInventario.getQuantidade();
             default:

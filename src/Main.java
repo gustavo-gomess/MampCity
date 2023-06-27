@@ -170,6 +170,7 @@ public class Main {
             String descricao = JOptionPane.showInputDialog(null, "Digite a descrição da Infraestrutura!");
 
             Local local = new Local (nome,descricao);
+            JOptionPane.showMessageDialog(null, "CADASTRO EFETUADO COM SUCESSO");
             getLocalDAO().salvar(local);
 
         } catch (Exception e) {
@@ -190,7 +191,7 @@ public class Main {
 
             getLocalDAO().salvar(local);
         }
-        chamaMenuInventario();
+        chamaMenuInfra();
     }
 
     public static void excluirInfra() {
@@ -243,6 +244,7 @@ public class Main {
             Integer quantidade = Integer.valueOf(JOptionPane.showInputDialog(null, "Digite a quantidade"));
 
             Inventario inventario = new Inventario(item, descricao, quantidade);
+            JOptionPane.showMessageDialog(null, "CADASTRO EFETUADO COM SUCESSO");
             getInventarioDAO().salvar(inventario);
 
         } catch (Exception e) {
@@ -267,7 +269,7 @@ public class Main {
             Integer alteraQuantidade = Integer.valueOf(JOptionPane.showInputDialog(null, "Digite a quantidade"));
 
             produtoAtual.setItem(alteraProduto);
-            produtoAtual.setDescricao(alteraDescricao);
+            produtoAtual.setDescricaoInv(alteraDescricao);
             produtoAtual.setQuantidade(alteraQuantidade);
 
             getInventarioDAO().salvar(produtoAtual);
