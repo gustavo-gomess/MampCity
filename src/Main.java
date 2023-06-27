@@ -10,6 +10,7 @@ import java.time.format.DateTimeFormatter;
 import java.util.List;
 
 import static java.lang.System.exit;
+import static model.StatusSocio.INATIVO;
 
 
 public class Main {
@@ -108,7 +109,7 @@ public class Main {
        // String carterinha = JOptionPane.showInputDialog(null, "Digite o  nome do Socio: ", carterinhaatual.getCarterinha());
 
         if (socio.equals(socio)) {
-            Object[] selecionaStatusSocio = { StatusSocio.ATIVO, StatusSocio.INATIVO };
+            Object[] selecionaStatusSocio = { StatusSocio.ATIVO, INATIVO };
             int statusSocioIndex = JOptionPane.showOptionDialog(null, "Selecione o status de sócio", "Status de Sócio",
                     JOptionPane.DEFAULT_OPTION, JOptionPane.PLAIN_MESSAGE, null, selecionaStatusSocio, selecionaStatusSocio[0]);
             if (statusSocioIndex == 0){
@@ -302,6 +303,11 @@ public class Main {
 
     public static Aluguel cadastroAluguel() {
         Socio socio = selecaoDeSocio();
+        StatusSocio inativo = socio.getEnumStatusSocio();
+        if (inativo == INATIVO){
+            JOptionPane.showMessageDialog(null,"Socio INATIVO!! Favor selecionar um socio ATIVO");
+            chamaMenuAluguel();
+        }
         Local local = selecaoDeLocal();
         Inventario inventario = selecaoDeInventario();
 
