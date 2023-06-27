@@ -18,7 +18,8 @@ public class TableInventario extends AbstractTableModel{
 
     protected Vector<Inventario> vetorDados;
 
-    public TableInventario(String[] columnNames, Vector<Inventario> vetorDados) {
+    public TableInventario(String[] columnNames,
+                           Vector<Inventario> vetorDados) {
         this.nomeColunas = columnNames;
         this.vetorDados = vetorDados;
     }

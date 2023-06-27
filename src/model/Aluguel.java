@@ -7,15 +7,23 @@ import java.util.List;
 public class Aluguel extends Entity {
     private Socio socio;
     private Local local;
+    private Inventario inventario;
     private String descricaoAluguel;
     private LocalDateTime dataHoraInicio;
     private LocalDateTime dataHoraFim;
     private String numeroVisitantes;
 
 
-    public Aluguel(Socio socio, Local local, String descricaoAluguel, LocalDateTime dataHoraInicio, LocalDateTime dataHoraFim, String numeroVisitantes) {
+    public Aluguel(Socio socio,
+                   Local local,
+                   Inventario inventario,
+                   String descricaoAluguel,
+                   LocalDateTime dataHoraInicio,
+                   LocalDateTime dataHoraFim,
+                   String numeroVisitantes) {
         this.socio = socio;
         this.local = local;
+        this.inventario = inventario;
         this.descricaoAluguel = descricaoAluguel;
         this.dataHoraInicio = dataHoraInicio;
         this.dataHoraFim = dataHoraFim;

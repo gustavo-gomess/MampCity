@@ -20,7 +20,8 @@ public class TableSocio extends AbstractTableModel {
     protected String[] nomeColunas;
     protected Vector<Socio> vetorDados;
 
-    public TableSocio(String[] columnNames, Vector<Socio> vetorDados) {
+    public TableSocio(String[] columnNames,
+                      Vector<Socio> vetorDados) {
         this.nomeColunas = columnNames;
         this.vetorDados = vetorDados;
     }

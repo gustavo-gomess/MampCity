@@ -17,7 +17,8 @@ public class TableLocal extends AbstractTableModel {
     protected String[] nomeColunas;
     protected Vector<Local> vetorDados;
 
-    public TableLocal (String[] columnNames, Vector<Local> vetorDados) {
+    public TableLocal (String[] columnNames,
+                       Vector<Local> vetorDados) {
         this.nomeColunas = columnNames;
         this.vetorDados = vetorDados;
     }

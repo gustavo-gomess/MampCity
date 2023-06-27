@@ -5,7 +5,13 @@ public class Socio extends Pessoa{
     private StatusSocio statusSocio;
     private TipoSocio enumTipoSocio;
 
-    public Socio(Integer carterinha, StatusSocio statusSocio, TipoSocio enumTipoSocio, String nome, String cpf, String email, Integer telefone) {
+    public Socio(Integer carterinha,
+                 StatusSocio statusSocio,
+                 TipoSocio enumTipoSocio,
+                 String nome,
+                 String cpf,
+                 String email,
+                 Integer telefone) {
         this.setNomeCompleto(nome);
         this.setEmail(email);
         this.setCpf(cpf);
