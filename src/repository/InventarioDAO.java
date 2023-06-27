@@ -25,6 +25,7 @@ public class InventarioDAO implements IGenericDao<Inventario> {
         if(inventario.getId() != null){
             listaInventario.remove((int) (inventario.getId() -1));
         }
+
     }
 
     @Override
@@ -41,8 +42,10 @@ public class InventarioDAO implements IGenericDao<Inventario> {
                 itensFiltrados.add(itens);
             }
         }
+
         return itensFiltrados;
     }
+
     public Object[] findInvetarioInArray() {
         List<Inventario> inventario = buscarTodos();
         List<String> inventarioNomes = new ArrayList<>();

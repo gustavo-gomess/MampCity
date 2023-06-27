@@ -9,7 +9,9 @@ public class Inventario extends Entity{
     private String descricao;
     private Integer quantidade;
 
-    public Inventario(String item, String descricao, Integer quantidade) {
+    public Inventario(String item,
+                      String descricao,
+                      Integer quantidade) {
         this.item = item;
         this.descricao = descricao;
         this.quantidade = quantidade;

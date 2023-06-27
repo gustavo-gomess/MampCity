@@ -19,7 +19,8 @@ public class TableAluguel extends AbstractTableModel  {
     protected String[] nomeColunas;
     protected Vector<Aluguel> vetorDados;
 
-    public TableAluguel(String[] columnNames, Vector<Aluguel> vetorDados) {
+    public TableAluguel(String[] columnNames,
+                        Vector<Aluguel> vetorDados) {
         this.nomeColunas = columnNames;
         this.vetorDados = vetorDados;
     }

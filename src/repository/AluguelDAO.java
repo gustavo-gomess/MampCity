@@ -41,7 +41,9 @@ public class AluguelDAO implements IGenericDao<Aluguel> {
             }
         }
         return busca_aluguel;
+
     }
+
 }
 
 

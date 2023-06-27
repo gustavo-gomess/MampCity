@@ -10,6 +10,7 @@ import java.time.format.DateTimeFormatter;
 import java.util.List;
 
 import static java.lang.System.exit;
+import static model.StatusSocio.INATIVO;
 
 
 public class Main {
@@ -57,8 +58,7 @@ public class Main {
                 cadastroSocio();
                 break;
             case 1: // Altera Sócio
-                socio = selecaoDeSocio();
-                alteraSocio(socio);
+                alteraSocio();
                 break;
             case 2:// Excluir Sócio
                 excluirSocio();
@@ -79,11 +79,11 @@ public class Main {
             Object[] selecionaTipoSocio = { TipoSocio.PRINCIPAL, TipoSocio.DEPENDENTE };
             int tipoSocioIndex = JOptionPane.showOptionDialog(null, "Selecione o tipo de sócio", "Tipo de Sócio",
                     JOptionPane.DEFAULT_OPTION, JOptionPane.PLAIN_MESSAGE, null, selecionaTipoSocio, selecionaTipoSocio[0]);
-            Object[] selecionaStatusSocio = { StatusSocio.ATIVO, StatusSocio.INATIVO };
-            int statusSocioIndex = JOptionPane.showOptionDialog(null, "Selecione o status de sócio", "Status de Sócio",
-                    JOptionPane.DEFAULT_OPTION, JOptionPane.PLAIN_MESSAGE, null, selecionaStatusSocio, selecionaStatusSocio[0]);
+//            Object[] selecionaStatusSocio = { StatusSocio.ATIVO, StatusSocio.INATIVO };
+//            int statusSocioIndex = JOptionPane.showOptionDialog(null, "Selecione o status de sócio", "Status de Sócio",
+//                    JOptionPane.DEFAULT_OPTION, JOptionPane.PLAIN_MESSAGE, null, selecionaStatusSocio, selecionaStatusSocio[0]);
 
-            Socio socio = new Socio(carteirinha, (StatusSocio) selecionaStatusSocio[statusSocioIndex],
+            Socio socio = new Socio(carteirinha, StatusSocio.ATIVO,
                     (TipoSocio) selecionaTipoSocio[tipoSocioIndex], nome, cpf, email, telefone);
                 JOptionPane.showMessageDialog(null, "CADASTRO EFETUADO COM SUCESSO");
 
@@ -104,19 +104,30 @@ public class Main {
         return socios.get(0);
     }
 
-    public static void alteraSocio(Socio carterinhaatual){
-        String carterinha = JOptionPane.showInputDialog(null, "Digite o  nome do item: ", carterinhaatual.getCarterinha());
+    public static void alteraSocio(){
+        Socio socio = selecaoDeSocio();
+       // String carterinha = JOptionPane.showInputDialog(null, "Digite o  nome do Socio: ", carterinhaatual.getCarterinha());
 
-        if (carterinha.equals(carterinha)) {
-            String alteraNome = JOptionPane.showInputDialog(null, "Digite o novo nome: ");
-            String alteraEmail = JOptionPane.showInputDialog(null, "Digite um novo email : ");
-            Integer alteraTelefone = Integer.valueOf(JOptionPane.showInputDialog(null, "Digite o novo telefone"));
+        if (socio.equals(socio)) {
+            Object[] selecionaStatusSocio = { StatusSocio.ATIVO, INATIVO };
+            int statusSocioIndex = JOptionPane.showOptionDialog(null, "Selecione o status de sócio", "Status de Sócio",
+                    JOptionPane.DEFAULT_OPTION, JOptionPane.PLAIN_MESSAGE, null, selecionaStatusSocio, selecionaStatusSocio[0]);
+            if (statusSocioIndex == 0){
+                String alteraNome = JOptionPane.showInputDialog(null, "Digite o novo nome: ");
+                String alteraEmail = JOptionPane.showInputDialog(null, "Digite um novo email : ");
+                Integer alteraTelefone = Integer.valueOf(JOptionPane.showInputDialog(null, "Digite o novo telefone"));
 
-            carterinhaatual.setNomeCompleto(alteraNome);
-            carterinhaatual.setEmail(alteraEmail);
-            carterinhaatual.setTelefone(alteraTelefone);
+                socio.setEnumStatusSocio((StatusSocio) selecionaStatusSocio[statusSocioIndex]);
+                socio.setNomeCompleto(alteraNome);
+                socio.setEmail(alteraEmail);
+                socio.setTelefone(alteraTelefone);
 
-            getSocioDAO().salvar(carterinhaatual);
+                getSocioDAO().salvar(socio);
+            }else {
+                socio.setEnumStatusSocio((StatusSocio) selecionaStatusSocio[statusSocioIndex]);
+                getSocioDAO().salvar(socio);
+            }
+            chamaMenuSocio();
         }
         chamaMenuSocio();
     }
@@ -129,6 +140,7 @@ public class Main {
         } else {
             chamaMenuSocio();
         }
+        chamaMenuSocio();
     }
 
     public static void chamaMenuInfra() {
@@ -141,8 +153,7 @@ public class Main {
                 cadastrarInfra();
                 break;
             case 1: // Altera um local cadastrado;
-                local = selecaoDeLocal();
-                alteraInfra(local);
+                alteraInfra();
                 break;
             case 2:// Excluir um local cadastrado
                 excluirInfra();
@@ -167,16 +178,15 @@ public class Main {
         chamaMenuInfra();
     }
 
-    public static void alteraInfra (Local local){
-        String localAltera = JOptionPane.showInputDialog(null, "Digite o nome do item: ", local.getNome());
-
-        if (local.equals(localAltera)) {
+    public static void alteraInfra (){
+        //String localAltera = JOptionPane.showInputDialog(null, "Digite o nome do item: ", local.getNome());
+        Local local = selecaoDeLocal();
+        if (local.equals(local)) {
             String alteranome = JOptionPane.showInputDialog(null, "Digite o nome do local: ");
             String alteraDescricao = JOptionPane.showInputDialog(null, "Digite uma descrição: ");
 
             local.setNome(alteranome);
             local.setDescricacaoLocal(alteraDescricao);
-
 
             getLocalDAO().salvar(local);
         }
@@ -191,6 +201,7 @@ public class Main {
         } else {
             chamaMenuInfra();
         }
+        chamaMenuInfra();
     }
 
     public static Local selecaoDeLocal() {
@@ -222,7 +233,7 @@ public class Main {
                 chamaMenuPrincipal();
                 break;
         }
-
+        chamaMenuPrincipal();
     }
 
     public static void cadastroInventario() {
@@ -249,10 +260,7 @@ public class Main {
         return inventarios.get(0);
     }
 
-
-
     public static void alteraInventario(Inventario produtoAtual) {
-
         if (produtoAtual.equals(produtoAtual)) {
             String alteraProduto = JOptionPane.showInputDialog(null, "Digite o nome do Item: ");
             String alteraDescricao = JOptionPane.showInputDialog(null, "Digite uma descrição: ");
@@ -279,7 +287,6 @@ public class Main {
 
 
     public static void chamaMenuAluguel() {
-
         String[] opcoesMenuAluguel = {"Cadastrar Aluguel", "Voltar"};
         int menuCadastroAluguel = JOptionPane.showOptionDialog(null, "Escolha uma opção:", "Cadastrar",
                 JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE, null, opcoesMenuAluguel, opcoesMenuAluguel[0]);
@@ -296,8 +303,13 @@ public class Main {
 
     public static Aluguel cadastroAluguel() {
         Socio socio = selecaoDeSocio();
+        StatusSocio inativo = socio.getEnumStatusSocio();
+        if (inativo == INATIVO){
+            JOptionPane.showMessageDialog(null,"Socio INATIVO!! Favor selecionar um socio ATIVO");
+            chamaMenuAluguel();
+        }
         Local local = selecaoDeLocal();
-
+        Inventario inventario = selecaoDeInventario();
 
         String descricaoAluguel = JOptionPane.showInputDialog("Digite a descrição do aluguel:");
         String dataInicio = JOptionPane.showInputDialog("Digite a data de início no formato dd/MM/yyyy:");
@@ -309,39 +321,31 @@ public class Main {
         LocalDateTime dataHoraFim = fim.atTime(07, 00, 00);
         String numeroVisitantes = JOptionPane.showInputDialog("Digite a quantidade de visitantes:");
 
-        Aluguel aluguel = new Aluguel(socio, local, descricaoAluguel, dataHoraInicio, dataHoraFim, numeroVisitantes);
+        Aluguel aluguel = new Aluguel(socio, local,inventario, descricaoAluguel, dataHoraInicio, dataHoraFim, numeroVisitantes);
 
         JOptionPane.showMessageDialog(null, "Cadastro de Aluguel realizado com sucesso");
 
         getAluguelDAO().salvar(aluguel);
         return aluguel;
-
     }
 
-
     public static void chamaRelatorioInventario(){
-
         List<Inventario> inventarios = getInventarioDAO().buscarTodos();
         RelatorioInventarioForm.emitirRelatorio(inventarios);
     }
 
 
     public static void chamaRelatorioLocais(){
-
         List<Local> locals = getLocalDAO().buscarTodos();
         RelatorioLocalForm.emitirRelatorio(locals);
-
     }
 
     public static void chamaRelatorioSocios(){
-
         List<Socio> socios = getSocioDAO().buscarTodos();
         RelatorioSocioForm.emitirRelatorio(socios);
-
     }
 
     public static void chamaRelatorioAluguel(){
-
         List<Aluguel> aluguel = getAluguelDAO().buscarTodos();
         RelatorioAluguelForm.emitirRelatorio(aluguel);
     }
@@ -370,7 +374,7 @@ public class Main {
                 chamaMenuPrincipal();
                 break;
         }
-
+        chamaMenuPrincipal();
     }
     public static void checaSenhaUsuario(Object usuarioLogado) throws SQLException, ClassNotFoundException {
         String senhaDigitada = JOptionPane.showInputDialog(null,

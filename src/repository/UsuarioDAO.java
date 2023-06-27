@@ -37,6 +37,7 @@ public class UsuarioDAO {
                 return usuario;
             }
         }
+
         return null;
     }
 }
