@@ -18,7 +18,8 @@ public class TableInventario extends AbstractTableModel{
 
     protected Vector<Inventario> vetorDados;
 
-    public TableInventario(String[] columnNames, Vector<Inventario> vetorDados) {
+    public TableInventario(String[] columnNames,
+                           Vector<Inventario> vetorDados) {
         this.nomeColunas = columnNames;
         this.vetorDados = vetorDados;
     }
@@ -42,7 +43,7 @@ public class TableInventario extends AbstractTableModel{
             case INDEX_ITEM:
                 return registroInventario.getItem();
             case INDEX_DESCRICAO:
-                return registroInventario.getDescricao();
+                return registroInventario.getDescricaoInv();
             case INDEX_QUANTIDADE:
                 return registroInventario.getQuantidade();
             default:

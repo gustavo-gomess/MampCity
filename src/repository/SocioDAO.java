@@ -17,6 +17,7 @@ public class SocioDAO implements IGenericDao<Socio> {
         } else {
             socios.remove((int) (socio.getId() - 1));
         }
+
         socios.add(socio);
     }
 
@@ -41,6 +42,7 @@ public class SocioDAO implements IGenericDao<Socio> {
                 sociosfiltrados.add(socio);
             }
         }
+
         return sociosfiltrados;
     }
 
@@ -50,6 +52,7 @@ public class SocioDAO implements IGenericDao<Socio> {
         for (Socio socio : socios) {
             sociosNomes.add(socio.getNomeCompleto());
         }
+
         return sociosNomes.toArray();
     }
         public boolean existeCarteirinha(int numeroCarteirinha) {

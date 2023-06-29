@@ -9,39 +9,26 @@ import java.util.List;
 public class LocalDAO implements IGenericDao<Local>{
     static List<Local> novoLocal = new ArrayList<>();
 
-    public void init(){
-        if (novoLocal.isEmpty()){
-            Local local1 = new Local();;
-            local1.setNome("SALÃO 1");
-            local1.setDescricacaoLocal("COM 200 CADEIRAS");
-
-            Local local2 = new Local();
-            local2.setNome("SALÃO 2");
-            local2.setDescricacaoLocal("COM 500 CADEIRAS");
-
-            Local local3 = new Local();
-            local3.setNome("SALÃO 3");
-            local3.setDescricacaoLocal("COM 1000 CADEIRAS");
-
-            novoLocal.add(local1);
-            novoLocal.add(local2);
-            novoLocal.add(local3);
-        }
-    }
-
     @Override
     public void salvar(Local local) {
+        if (local.getId() == null) {
+            local.setId((long) (novoLocal.size() + 1));
+        } else {
+            novoLocal.remove((int) (local.getId() - 1));
+        }
+
         novoLocal.add(local);
     }
 
     @Override
     public void remover(Local local) {
-        novoLocal.remove(local);
+        if (local.getId() != null) {
+            novoLocal.remove((int) (local.getId() - 1));
+        }
     }
 
     @Override
     public List<Local> buscarTodos() {
-        init();
         System.out.println(novoLocal);
         return novoLocal;
     }
@@ -54,6 +41,7 @@ public class LocalDAO implements IGenericDao<Local>{
                 localfiltrados.add(local);
             }
         }
+
         return localfiltrados;
     }
 
@@ -63,6 +51,7 @@ public class LocalDAO implements IGenericDao<Local>{
         for (Local local : locais) {
             localsNomes.add(local.getNome());
         }
+
         return localsNomes.toArray();
     }
 
@@ -74,6 +63,7 @@ public class LocalDAO implements IGenericDao<Local>{
         }
         return false;
     }
+
 }
 
 

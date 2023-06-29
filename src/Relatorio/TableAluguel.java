@@ -12,14 +12,16 @@ public class TableAluguel extends AbstractTableModel  {
     public static final int INDEX_SOCIO = 0;
     public static final int INDEX_LOCAL = 1;
     public static final int INDEX_DESCRICAOALUGUEL = 2;
-    public static final int INDEX_DATAHORAINICIO = 3;
-    public static final int INDEX_DATAHORAFIM = 4;
-    public static final int INDEX_NUMERODEVISITANTES = 5;
-    public static final int INDEX_ESCONDIDO = 6;
+    public static final int INDEX_DESCRICAOINVENTARIO = 3;
+    public static final int INDEX_DATAHORAINICIO = 4;
+    public static final int INDEX_DATAHORAFIM = 5;
+    public static final int INDEX_NUMERODEVISITANTES = 6;
+    public static final int INDEX_ESCONDIDO = 7;
     protected String[] nomeColunas;
     protected Vector<Aluguel> vetorDados;
 
-    public TableAluguel(String[] columnNames, Vector<Aluguel> vetorDados) {
+    public TableAluguel(String[] columnNames,
+                        Vector<Aluguel> vetorDados) {
         this.nomeColunas = columnNames;
         this.vetorDados = vetorDados;
     }
@@ -48,6 +50,8 @@ public class TableAluguel extends AbstractTableModel  {
                 return registroAluguel.getLocal().getNome();
             case INDEX_DESCRICAOALUGUEL:
                 return registroAluguel.getDescricao();
+            case INDEX_DESCRICAOINVENTARIO:
+                return registroAluguel.getInventario().getItem();
             case INDEX_DATAHORAINICIO:
                 return registroAluguel.getDataHoraInicio();
             case INDEX_DATAHORAFIM:

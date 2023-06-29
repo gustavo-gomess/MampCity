@@ -4,7 +4,8 @@ public class Local extends Entity {
     private String nome;
     private String descricacaoLocal;
 
-    public Local(String nome, String descricacaoLocal) {
+    public Local(String nome,
+                 String descricacaoLocal) {
         this.nome = nome;
         this.descricacaoLocal = descricacaoLocal;
     }

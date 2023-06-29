@@ -1,17 +1,16 @@
 package model;
 
-import java.math.BigDecimal;
-import java.time.LocalDate;
-
 public class Inventario extends Entity{
 
     private String item;
-    private String descricao;
+    private String descricaoInv;
     private Integer quantidade;
 
-    public Inventario(String item, String descricao, Integer quantidade) {
+    public Inventario(String item,
+                      String descricaoInv,
+                      Integer quantidade) {
         this.item = item;
-        this.descricao = descricao;
+        this.descricaoInv = descricaoInv;
         this.quantidade = quantidade;
     }
     public String getItem() {
@@ -22,12 +21,12 @@ public class Inventario extends Entity{
         this.item = item;
     }
 
-    public String getDescricao() {
-        return descricao;
+    public String getDescricaoInv() {
+        return descricaoInv;
     }
 
-    public void setDescricao(String descricao) {
-        this.descricao = descricao;
+    public void setDescricaoInv(String descricaoInv) {
+        this.descricaoInv = descricaoInv;
     }
 
     public Integer getQuantidade() {
@@ -43,7 +42,7 @@ public class Inventario extends Entity{
     public String toString() {
         return "Inventario{" +
                 "item='" + item + '\'' +
-                ", descricao='" + descricao + '\'' +
+                ", descricaoInv='" + descricaoInv + '\'' +
                 ", quantidade=" + quantidade +
                 '}';
     }
