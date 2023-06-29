@@ -1,7 +1,9 @@
 package repository;
 
+import model.Aluguel;
 import model.Pessoa;
 import model.Socio;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -41,6 +43,7 @@ public class SocioDAO implements IGenericDao<Socio> {
         }
         return sociosfiltrados;
     }
+
     public Object[] findSocioInArray() {
         List<Socio> socios = buscarTodos();
         List<String> sociosNomes = new ArrayList<>();
@@ -49,4 +52,16 @@ public class SocioDAO implements IGenericDao<Socio> {
         }
         return sociosNomes.toArray();
     }
-}
+        public boolean existeCarteirinha(int numeroCarteirinha) {
+            for (Socio socio : socios) {
+                if (socio.getCarterinha() == numeroCarteirinha) {
+                    return true;
+                }
+            }
+            return false;
+        }
+    }
+
+
+
+

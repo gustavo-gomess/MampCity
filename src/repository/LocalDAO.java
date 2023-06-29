@@ -65,6 +65,15 @@ public class LocalDAO implements IGenericDao<Local>{
         }
         return localsNomes.toArray();
     }
+
+    public boolean existeInfraestrutura(String nome) {
+        for (Local infraestrutura : novoLocal) {
+            if (infraestrutura.getNome().equalsIgnoreCase(nome)) {
+                return true;
+            }
+        }
+        return false;
+    }
 }
 
 
