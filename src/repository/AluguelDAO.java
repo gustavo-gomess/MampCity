@@ -32,6 +32,7 @@ public class AluguelDAO implements IGenericDao<Aluguel> {
         return novoAluguel;
     }
 
+
     @Override
     public List<Aluguel> buscarPorNome(String nome_local) {
         List<Aluguel> busca_aluguel = new ArrayList<>();
